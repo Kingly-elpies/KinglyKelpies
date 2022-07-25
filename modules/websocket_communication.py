@@ -1,8 +1,9 @@
 import asyncio
 import functools
-import websockets
-import threading
 import json
+import threading
+
+import websockets
 
 ###########################---Communication Manager---###########################
 
