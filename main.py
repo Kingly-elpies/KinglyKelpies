@@ -5,6 +5,7 @@ from modules import map_parser
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Starting Template"
+MOVING_SPEED = 1    # Unit is tile/second
 
 
 class MyGame(arcade.Window):
@@ -83,11 +84,11 @@ class MyGame(arcade.Window):
         map_name = "tutorial1"
         self.clear()
         match key:
-            case arcade.key.A:
+            case arcade.key.W:
                 self.maps.draw_layer(map_name, self.maps.Layers.GROUND)
-            case arcade.key.B:
+            case arcade.key.A:
                 self.maps.draw_layer(map_name, self.maps.Layers.OBJECTS)
-            case arcade.key.C:
+            case arcade.key.S:
                 self.maps.draw_layer(map_name, self.maps.Layers.PLAYERS)
             case arcade.key.D:
                 self.maps.draw_layer(map_name)

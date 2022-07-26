@@ -2,10 +2,26 @@ import arcade
 from enum import Enum
 
 
+def get_sprite(player_id: int) -> arcade.Sprite:
+    """
+    Creates an arcade sprite for the player
+    :param int player_id: The id of the player we want the sprite (0 or 1)
+    """
+    return arcade.Sprite(
+        filename=f"./resources/sprites/player{player_id}.png",
+        scale=4.0,
+        image_width=16, image_height=16,
+        center_x=8, center_y=8,
+        hit_box_algorithm='Simple'
+    )
+
+
 class MapManager:
     def __init__(self) -> None:
-        self.maps = dict()
-        self.sprite_lists = dict()
+        self.maps = None
+        self.tile_map = None
+        self.sprite_lists = None
+        self.physics_engine = None
 
     class Layers(Enum):
         """ Represents any layer that can be present in a map for this game """
@@ -29,10 +45,14 @@ class MapManager:
         :param float scaling: Factor by which the size of the map should be increased (default: 1)
         """
         # Loading the map
-        self.maps[map_name] = arcade.load_tilemap(f"./resources/tilemaps/{map_name}.tmx", scaling)
+        self.tile_map = arcade.load_tilemap(f"./resources/tilemaps/{map_name}.tmx", scaling)
 
         # Getting all the sprite layers in this map
-        self.sprite_lists[map_name] = self.maps[map_name].sprite_lists
+        self.sprite_lists = self.maps.sprite_lists
+        """self.physics_engine = arcade.PhysicsEngineSimple(
+            player_sprite=get_sprite(self.player_id),
+            walls=self.sprite_lists["Walls"]
+        )"""
 
     def draw_layer(self, map_name: str, layer: Layers = Layers.ALL) -> None:
         """
