@@ -1,5 +1,5 @@
 import arcade
-from modules import start_menu
+from modules import start_menu, pause_menu, maps_loader
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
@@ -18,25 +18,28 @@ class MyGame(arcade.Window):
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
 
-        self.background = arcade.load_texture(":resources:images/cybercity_background/far-buildings.png")
         self.background = arcade.color.DARK_BLUE_GRAY
+        self.default_args = dict(vars(self))
         # If you have sprite lists, you should create them here,
         # and set them to None
 
     def setup(self):
         """ Set up the game variables. Call to re-start the game. """
+        # Clearing Game Variables to Default
+        for item in vars(self):
+            if item not in self.default_args: del item
+
         # Create your sprites and sprite lists here
         self.start_menu = start_menu.StartMenu(self)
+        self.pause_menu = pause_menu.PauseMenu(self)
+        self.maps_loader = maps_loader.MapManager(self)
+
         self.start_menu.select_menu()
 
     def game(self, c_manager):
         # Gets Called when the Game Begins
         self._setup = False
-
-        # Temporary Pause to allow other client to connect
-        arcade.pause(3)
-        c_manager.send_message("Test Data")
-        print(c_manager.export_updates())
+        self.maps_loader.load_map_data("tutorial1", 4)
 
     def on_draw(self):
         """
@@ -51,12 +54,11 @@ class MyGame(arcade.Window):
         arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background) if type(self.background) != tuple else arcade.set_background_color(self.background)
 
         # Call draw() on all your sprite lists below
+        self.start_menu.draw_start_menu()
+        self.maps_loader.draw_layer()
 
-        # Check if Game is in Setup State, if so, draw setup
-        if self._setup:
-            self.manager.draw()
-            for sprite in self.additionals:
-                sprite.draw()
+        # Always draw on Top
+        self.pause_menu.draw_pause_menu()
 
 
     def on_update(self, delta_time):
@@ -74,7 +76,10 @@ class MyGame(arcade.Window):
         For a full list of keys, see:
         https://api.arcade.academy/en/latest/arcade.key.html
         """
-        pass
+        # Support for Pause Menu
+        if key == arcade.key.ESCAPE and not self._setup:
+            self._escape = not self._escape
+            self.pause_menu.pause() if self._escape else self.pause_menu.unpause()
 
     def on_key_release(self, key, key_modifiers):
         """
@@ -92,7 +97,6 @@ class MyGame(arcade.Window):
         """
         Called when the user presses a mouse button.
         """
-        pass
 
     def on_mouse_release(self, x, y, button, key_modifiers):
         """

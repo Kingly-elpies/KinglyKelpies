@@ -9,7 +9,7 @@ import websockets
 
 
 class CommsManager:
-    # This class will be used by the game to talk to
+    # This class will be used by the game to talk
     # to the other client
 
     def __init__(self):
@@ -24,9 +24,9 @@ class CommsManager:
         self.serverStop = None
 
     def flush(self):
-        # clears the to current "to_send" and replaces it with the updates
+        # clears the two current "to_send" and replaces it with the updates
         # that are in the buffer
-        # this is to avoid race condicions
+        # this is to avoid race conditions
 
         self.to_send.clear()
         self.to_send = self.buffer
@@ -47,19 +47,19 @@ class CommsManager:
         message_json = json.loads(message_str)
 
         content = message_json["Updates"]
-        if content != []:
+        if content:
             self.updates += content
 
-        if "webscoket.disconnect" in content:
+        if "websocket.disconnect" in content:
             self.running = False
 
     def get_unsend(self):
-        if "webscoket.disconnect" in self.to_send:
+        if "websocket.disconnect" in self.to_send:
             self.running = False
         return json.dumps({"Updates": self.to_send})
 
     def export_updates(self):
-        # returns the currend updates and deletes the ones he returned
+        # returns the current updates and deletes the ones he returned
         to_return = self.updates.copy()
         [self.updates.remove(item) for item in to_return]
         return to_return
@@ -121,10 +121,10 @@ async def server(websocket, *args, **kwargs):
 
         c_manager.flush()  # Delete the send information
 
-        # Recive new information
+        # Receive new information
         c_manager.parse_message(await websocket.recv())
 
-        await asyncio.sleep(0.05)  # Wait; to not consume to much resources
+        await asyncio.sleep(0.05)  # Wait; to not consume too much resources
 
     c_manager.status = "Disconnected"
     await websocket.close()
@@ -140,7 +140,7 @@ async def client(ip, port, c_manager: CommsManager):
 
     while c_manager.running:
 
-        # Recive new information
+        # Receive new information
         c_manager.parse_message(await websocket.recv())
 
         # print(c_manager.updates) #[DEBUG]
@@ -149,7 +149,7 @@ async def client(ip, port, c_manager: CommsManager):
 
         c_manager.flush()  # Delete the send information
 
-        await asyncio.sleep(0.05)  # Wait; to not consume to much resources
+        await asyncio.sleep(0.05)  # Wait; to not consume too much resources
 
     c_manager.status = "Disconnected"
     await websocket.close()
@@ -159,7 +159,7 @@ async def client(ip, port, c_manager: CommsManager):
 
 
 def start_websocket(ip, port, is_host=False) -> CommsManager:
-    # Stats the websocket in a diffrend thread
+    # Stats the websocket in a different thread
     # and returns the CommsManager, he allows the user to communicate
 
     c_manager = CommsManager()
