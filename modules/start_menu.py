@@ -27,8 +27,8 @@ class StartMenu:
         with open(self.settings_path) as json_file:
             self.game.settings_json = json.load(json_file)
         self.game.volume, self.game.music, self.game.sound = self.game.settings_json["master_volume"], \
-                                                             self.game.settings_json["music"], self.game.settings_json[
-                                                                 "sound"]  # Fix that Later when loading a json to save settings
+            self.game.settings_json["music"], self.game.settings_json[
+            "sound"]  # Fix that Later when loading a json to save settings
 
         self.game.play_sound = self.play_sound
         self.game.default_style = {

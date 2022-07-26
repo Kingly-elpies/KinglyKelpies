@@ -27,7 +27,8 @@ class MyGame(arcade.Window):
         """ Set up the game variables. Call to re-start the game. """
         # Clearing Game Variables to Default
         for item in vars(self):
-            if item not in self.default_args: del item
+            if item not in self.default_args:
+                del item
 
         # Create your sprites and sprite lists here
         self.start_menu = start_menu.StartMenu(self)
@@ -51,7 +52,8 @@ class MyGame(arcade.Window):
         self.clear()
 
         # Draw the background texture
-        arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background) if type(self.background) != tuple else arcade.set_background_color(self.background)
+        arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background) if type(
+            self.background) != tuple else arcade.set_background_color(self.background)
 
         # Call draw() on all your sprite lists below
         self.start_menu.draw_start_menu()
@@ -59,7 +61,6 @@ class MyGame(arcade.Window):
 
         # Always draw on Top
         self.pause_menu.draw_pause_menu()
-
 
     def on_update(self, delta_time):
         """

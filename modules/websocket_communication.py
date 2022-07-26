@@ -32,7 +32,7 @@ class CommsManager:
         self.to_send = self.buffer
         self.buffer.clear()
 
-    def send_message(self, update:dict):
+    def send_message(self, update: dict):
         # send information to the server or client
         self.buffer.append(update)
 
