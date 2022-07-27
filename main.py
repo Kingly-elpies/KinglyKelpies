@@ -25,18 +25,21 @@ class MyGame(arcade.Window):
 
     def setup(self):
         """ Set up the game variables. Call to re-start the game. """
-        # Clearing Game Variables to Default
+        # Clearing Game Variables to Default (Support for re-starting the Game)
         for item in vars(self):
             if item not in self.default_args: del item
 
         # Create your sprites and sprite lists here
+
+        # Initializing Modules
         self.start_menu = start_menu.StartMenu(self)
         self.pause_menu = pause_menu.PauseMenu(self)
         self.maps_loader = maps_loader.MapManager(self)
-
+        # Calling the Select Menu to show on Startup
         self.start_menu.select_menu()
 
     def game(self, c_manager):
+        """ Custom Function which gets called when joining a Game. """
         # Gets Called when the Game Begins
         self._setup = False
         self.maps_loader.load_map_data("tutorial1", 4)
@@ -78,7 +81,9 @@ class MyGame(arcade.Window):
         """
         # Support for Pause Menu
         if key == arcade.key.ESCAPE and not self._setup:
+            # Setting self._escape to the opposite of the Bool
             self._escape = not self._escape
+            # Pausing the Game if the Escape Bool is now true else unpause the game
             self.pause_menu.pause() if self._escape else self.pause_menu.unpause()
 
     def on_key_release(self, key, key_modifiers):
