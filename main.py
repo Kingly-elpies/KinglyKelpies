@@ -1,5 +1,5 @@
 import arcade
-from modules import start_menu, pause_menu, maps_loader
+from modules import start_menu, pause_menu, maps_loader, player
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
@@ -19,7 +19,9 @@ class MyGame(arcade.Window):
         super().__init__(width, height, title)
 
         self.background = arcade.color.DARK_BLUE_GRAY
+        self.background = (43, 137, 137)
         self.default_args = dict(vars(self))
+        self.physics_engines = []
         # If you have sprite lists, you should create them here,
         # and set them to None
 
@@ -39,11 +41,16 @@ class MyGame(arcade.Window):
         # Calling the Select Menu to show on Startup
         self.start_menu.select_menu()
 
-    def game(self, c_manager):
-        """ Custom Function which gets called when joining a Game. """
+    def game(self, c_manager, my_player):
+        """ Custom Function which gets called when joining a Game.
+        C_Manager is the CommunicationManager, My_Player is the random Player you are playing as. """
         # Gets Called when the Game Begins
         self._setup = False
         self.maps_loader.load_map_data("tutorial1", 4)
+
+        player_layers = self.maps_loader.sprite_lists[self.maps_loader.map_name]["Players"]
+        player_sprite = player_layers[my_player]
+        self.player = player.Player(self, player_sprite)
 
     def on_draw(self):
         """
@@ -71,7 +78,8 @@ class MyGame(arcade.Window):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
-        pass
+        for engine in self.physics_engines:
+            engine.update()
 
     def on_key_press(self, key, key_modifiers):
         """
@@ -86,12 +94,16 @@ class MyGame(arcade.Window):
             self._escape = not self._escape
             # Pausing the Game if the Escape Bool is now true else unpause the game
             self.pause_menu.pause() if self._escape else self.pause_menu.unpause()
+        #
+        if not self._setup:
+            self.player.player_key_press(key, key_modifiers)
 
     def on_key_release(self, key, key_modifiers):
         """
         Called whenever the user lets off a previously pressed key.
         """
-        pass
+        if not self._setup:
+            self.player.player_key_release(key, key_modifiers)
 
     def on_mouse_motion(self, x, y, delta_x, delta_y):
         """

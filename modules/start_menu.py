@@ -1,4 +1,5 @@
 import json
+import random
 import arcade
 import arcade.gui
 from arcade.experimental.uislider import UISlider
@@ -39,15 +40,15 @@ class StartMenu:
         self.game.default_style = {
             "font_name": ("calibri", "arial"),
             "font_size": 15,
-            "font_color": arcade.color.AMARANTH_PINK,
+            "font_color": (110, 200, 137), # (110, 200, 137) arcade.color.AMARANTH_PINK
             "border_width": 2,
             "border_color": None,
-            "bg_color": (27, 27, 27),
+            "bg_color": (52, 105, 116),
 
             # used if button is pressed
             "bg_color_pressed": arcade.color.EERIE_BLACK,
-            "border_color_pressed": arcade.color.AMARANTH_PINK,  # also used when hovered
-            "font_color_pressed": arcade.color.AMARANTH_PINK,
+            "border_color_pressed": (110, 200, 137),  # also used when hovered
+            "font_color_pressed": (110, 200, 137),
         }
 
     def play_sound(self, filename):
@@ -69,7 +70,7 @@ class StartMenu:
         self.v_box = arcade.gui.UIBoxLayout()
         # Always add/stay on top
         self.title = arcade.gui.UILabel(text="Your Ad Here", font_name=("calibri", "arial"), font_size=20,
-                                        text_color=arcade.color.AMARANTH_PINK, bold=True, dpi=200, align="center")
+                                        text_color=self.game.default_style["font_color"], bold=True, dpi=200, align="center")
         # Adding Title to the VBox and the VBox to the UIManager
         self.v_box.add(self.title.with_space_around(bottom=100))
         self.manager.add(
@@ -87,15 +88,15 @@ class StartMenu:
         self.max_texts, self.amount = max_texts+1, 1
         # Adding Loading Text to the VBox, which will later be updated with the UpdateTexts
         self.loading_text = arcade.gui.UILabel(text="Loading...", font_name=("calibri", "arial"), font_size=10,
-                                               text_color=arcade.color.WHITE, bold=True, dpi=200, align="center",
+                                               text_color=self.game.default_style["font_color"], bold=True, dpi=200, align="center",
                                                width=2000)
         self.v_box.add(self.loading_text.with_space_around(bottom=200))
         # The Background Box in dark grey, showing the Border of a Full Progress Bar
-        self.background_box = arcade.SpriteSolidColor(304, 14, (27, 27, 27))
+        self.background_box = arcade.SpriteSolidColor(304, 14, self.game.default_style["bg_color"])
         self.background_box.center_x, self.background_box.center_y = self.game._width // 2, self.game._height // 2 - 50
         self.additionals.append(self.background_box)
         # The Progress Bar in Green
-        self.full_box = arcade.SpriteSolidColor(300 // self.max_texts, 10, arcade.color.GREEN)
+        self.full_box = arcade.SpriteSolidColor(300 // self.max_texts, 10, self.game.default_style["font_color"])
         self.full_box.center_x, self.full_box.center_y = self.game._width // 2, self.game._height // 2 - 50
         self.additionals.append(self.full_box)
         # Updating the Game to the next Frame to ensure Loading
@@ -120,10 +121,10 @@ class StartMenu:
         self.client_input = arcade.gui.UIInputText(x=self.game._width // 2, y=self.game._height // 2 + 200,
                                                    width=300, height=20, text=self.default_client_text,
                                                    font_name=('Arial',), font_size=12,
-                                                   text_color=arcade.color.AMARANTH_PINK, multiline=False,
+                                                   text_color=self.game.default_style["font_color"], multiline=False,
                                                    size_hint_min=None, size_hint_max=None)
 
-        self.input_border = arcade.gui.UIBorder(child=self.client_input, border_color=(27, 27, 27))
+        self.input_border = arcade.gui.UIBorder(child=self.client_input, border_color=self.game.default_style["bg_color"])
         self.v_box.add(self.input_border.with_space_around(bottom=20))
 
         # Deleting the Default Text from the Client Input when its clicked
@@ -192,6 +193,11 @@ class StartMenu:
             else:
                 # Updating the Status to Connection Successful
                 self.update_loading_status(f"Connected successfully to {self.client_input.text}")
+                # Getting PlayerPosition set by the Server
+                # Get the message
+                player_choice_message = [msg for msg in c_manager.export_updates() if "PlayerChoice" in msg][0]
+                # Getting just the Integer from the message
+                my_player = int(player_choice_message.replace("[PlayerChoice] ", ""))
                 # Pausing the Game for 1 Second for a better visual experience
                 arcade.pause(1)
                 # Updating the Status to Loading Game
@@ -199,7 +205,7 @@ class StartMenu:
                 # Pausing the Game for 1 Second for a better visual experience
                 arcade.pause(1)
                 # Calling the main.py game() Function
-                self.game.game(c_manager)
+                self.game.game(c_manager, my_player)
 
     def server_click(self):
         """ Function Getting Called when clicking the Server Button. Loads a PORT Input. """
@@ -210,9 +216,9 @@ class StartMenu:
         self.server_input = arcade.gui.UIInputText(x=self.game._width // 2, y=self.game._height // 2 + 200,
                                                    width=300, height=20, text=self.default_server_text,
                                                    font_name=('Arial',), font_size=12,
-                                                   text_color=arcade.color.AMARANTH_PINK, multiline=False,
+                                                   text_color=self.game.default_style["font_color"], multiline=False,
                                                    size_hint_min=None, size_hint_max=None)
-        self.input_border = arcade.gui.UIBorder(child=self.server_input, border_color=(27, 27, 27))
+        self.input_border = arcade.gui.UIBorder(child=self.server_input, border_color=self.game.default_style["bg_color"])
         self.v_box.add(self.input_border.with_space_around(bottom=20))
 
         # Deleting the Default Text from the Server Input when its clicked
@@ -286,6 +292,11 @@ class StartMenu:
                     arcade.pause(1)
                 # Set the Message to the Server beeing successfully opened
                 self.update_loading_status(f"Host opened successfully on {self.server_input.text}")
+                # Selecting own Player by randomization
+                my_player = random.randint(0,1)
+                # And sending the other player to the client
+                other_player = 0 if my_player == 1 else 1
+                c_manager.send_message(f"[PlayerChoice] {other_player}")
                 # Pausing the Game for 1 Second for a better visual experience
                 arcade.pause(1)
                 # Updating Status
@@ -293,7 +304,7 @@ class StartMenu:
                 # Pausing the Game for 1 Second for a better visual experience
                 arcade.pause(1)
                 # Calling the main.py game() Function
-                self.game.game(c_manager)
+                self.game.game(c_manager, my_player)
 
     def settings_click(self):
         """ Function Getting Called when clicking the Settings Button. Loads the Settings Menu. """
@@ -303,7 +314,7 @@ class StartMenu:
         self.volumes_ui = arcade.gui.UIBoxLayout(vertical=False)
         # Adding a Text Label for Master Volume to the New UIManager
         volume_label = arcade.gui.UILabel(text="Master Volume", font_name=("calibri", "arial"), font_size=10,
-                                          text_color=arcade.color.AMARANTH_PINK, dpi=100)
+                                          text_color=self.game.default_style["font_color"], dpi=100)
         self.volumes_ui.add(volume_label.with_space_around(left=20))
         # Adding a Slider to the New UIManager
         ui_slider = UISlider(value=self.game.volume, width=150, height=30)
@@ -320,7 +331,7 @@ class StartMenu:
         self.sounds_ui = arcade.gui.UIBoxLayout(vertical=False)
         # Adding a Text Label for Sound to the New UIManager
         sound_label = arcade.gui.UILabel(text="Sound ON/OFF", font_name=("calibri", "arial"), font_size=10,
-                                         text_color=arcade.color.AMARANTH_PINK, dpi=100)
+                                         text_color=self.game.default_style["font_color"], dpi=100)
         self.sounds_ui.add(sound_label.with_space_around(left=20))
         # Adding the Sound Button to the new UIManager
         sound_button = arcade.gui.UIFlatButton(width=100, height=30, text="ON" if self.game.sound else "OFF",
@@ -340,7 +351,7 @@ class StartMenu:
         self.musics_ui = arcade.gui.UIBoxLayout(vertical=False)
         # Adding a Text Label for Music to the New UIManager
         music_label = arcade.gui.UILabel(text="Music ON/OFF", font_name=("calibri", "arial"), font_size=10,
-                                         text_color=arcade.color.AMARANTH_PINK, dpi=100)
+                                         text_color=self.game.default_style["font_color"], dpi=100)
         self.musics_ui.add(music_label.with_space_around(left=20))
         # Adding the Music Button to the new UIManager
         music_button = arcade.gui.UIFlatButton(width=100, height=30, text="ON" if self.game.music else "OFF",
