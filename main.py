@@ -18,8 +18,7 @@ class MyGame(arcade.Window):
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
 
-        self.background = arcade.color.DARK_BLUE_GRAY
-        self.background = (43, 137, 137)
+        self.background = (61, 169, 143)
         self.default_args = dict(vars(self))
         self.physics_engines = []
         # If you have sprite lists, you should create them here,
