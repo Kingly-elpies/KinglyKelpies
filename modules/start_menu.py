@@ -40,15 +40,15 @@ class StartMenu:
         self.game.default_style = {
             "font_name": ("calibri", "arial"),
             "font_size": 15,
-            "font_color": (110, 200, 137), # (110, 200, 137) arcade.color.AMARANTH_PINK
+            "font_color": (173,227,124), # (110, 200, 137) arcade.color.AMARANTH_PINK
             "border_width": 2,
             "border_color": None,
-            "bg_color": (52, 105, 116),
+            "bg_color": (43, 137, 137),
 
             # used if button is pressed
             "bg_color_pressed": arcade.color.EERIE_BLACK,
-            "border_color_pressed": (110, 200, 137),  # also used when hovered
-            "font_color_pressed": (110, 200, 137),
+            "border_color_pressed": (173,227,124),  # also used when hovered
+            "font_color_pressed": (173,227,124),
         }
 
     def play_sound(self, filename):
