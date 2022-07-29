@@ -74,8 +74,7 @@ class MyGame(arcade.Window):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
-        for engine in self.physics_engines:
-            engine.update()
+        pass
 
     def on_key_press(self, key, key_modifiers):
         """

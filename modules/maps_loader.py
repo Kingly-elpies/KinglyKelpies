@@ -1,10 +1,11 @@
 import arcade
 import json
 from PIL import Image
+from modules import objects
 
 
 class MapManager:
-    def __init__(self, game,screen_size = (800,600)) -> None:
+    def __init__(self, game, screen_size=(800, 600)) -> None:
         self.game = game
         self.map = [[]]
         self.scale = 4
@@ -13,6 +14,20 @@ class MapManager:
 
         self.textures = self.load_textures("./resources/tilesets/KelpiesTileset.png")
         self.sprites = []
+
+        self.collision = []
+        self.doors = []
+
+    def will_collide(self, x, y):
+        for collidable in self.collision:
+            w_x, w_y = collidable.sprite.center_x, collidable.sprite.center_y
+
+            if w_x == x and w_y == y:
+                return True
+        return False
+
+    def get_door(self,x,y):
+        return [door for door in self.doors if door.x == x and door.y == y][0] #return the door with the matching coordinates
 
     def load_textures(self, fp, tile_size=16):
         tile_map = Image.open(fp)
@@ -29,14 +44,16 @@ class MapManager:
         # convert them to textures
         return [arcade.Texture(name=n, image=img, hit_box_algorithm=None) for n, img in enumerate(tile_list)]
 
-    def handle_assingment(self,sprite,tile):
+    def handle_assingment(self, sprite, tile, x, y):
         match tile["type"]:
-            case (21):
-                self.player.set_sprite(sprite,21)
-            case (27):
-                self.player.set_sprite(sprite,27)
-
-
+            case (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12):  # walls
+                objects.Wall(sprite, self)
+            case (15): # Doors
+                objects.Door(sprite, tile, x, y, self)
+            case (21):  # P1
+                self.player.assing(sprite, 21, self)
+            case (27):  # P2
+                self.player.assing(sprite, 27, self)
 
     def generate_sprites(self):
         for y, row in enumerate(self.map):
@@ -48,17 +65,15 @@ class MapManager:
                     texture=texture,
                     angle=rotation,
                     scale=self.scale,
-                    center_x=
-                        x*self.tile_size*self.scale # calculate width of the map
-                        +(self.tile_size*self.scale)//2, # offset the map by half a tile to account of center positions
-                    center_y=
-                        self.screen_size[1] # sub from the top of the screen to make the Corrds like in pygame
-                        -y*self.tile_size*self.scale # calculate height of the map
-                        -(self.tile_size*self.scale)//2 # offset the map by half a tile to account of center positions
+                    center_x=x*self.tile_size*self.scale  # calculate width of the map
+                    + (self.tile_size*self.scale)//2,  # offset the map by half a tile to account of center positions
+                    center_y=self.screen_size[1]  # sub from the top of the screen to make the Corrds like in pygame
+                    - y*self.tile_size*self.scale  # calculate height of the map
+                    - (self.tile_size*self.scale)//2  # offset the map by half a tile to account of center positions
                 )
                 self.sprites.append(sprite)
 
-                self.handle_assingment(sprite, tile)
+                self.handle_assingment(sprite, tile, x, y)
 
     def load_map_data(self, map_name: str, player) -> None:
         """
@@ -70,7 +85,7 @@ class MapManager:
         self.map = json.load(open(f"./resources/tilemaps/{map_name}.json", "r"))["Map"]
         self.player = player
         self.generate_sprites()
-        self.game.background = (43,137,137)
+        self.game.background = (43, 137, 137)
 
     def draw_layer(self) -> None:
         """
@@ -79,11 +94,11 @@ class MapManager:
         :param Layers layer: The layer to be drawn (defaults to all)
         """
         if not self.game._setup:
-            arcade.draw_rectangle_filled((self.tile_size*len(self.map)*self.scale)//2, 
-                                            self.screen_size[1]-(self.tile_size*len(self.map)*self.scale)//2, 
-                                            self.tile_size*len(self.map)*self.scale, 
-                                            self.tile_size*len(self.map)*self.scale, 
-                                            (172,182,184))
+            arcade.draw_rectangle_filled((self.tile_size*len(self.map)*self.scale)//2,
+                                         self.screen_size[1]-(self.tile_size*len(self.map)*self.scale)//2,
+                                         self.tile_size*len(self.map)*self.scale,
+                                         self.tile_size*len(self.map)*self.scale,
+                                         (172, 182, 184))
 
             for sprite in self.sprites:
-                sprite.draw(pixelated = True)
+                sprite.draw(pixelated=True)
