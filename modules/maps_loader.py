@@ -1,52 +1,89 @@
 import arcade
-from enum import Enum
+import json
+from PIL import Image
 
 
 class MapManager:
-    def __init__(self, game) -> None:
+    def __init__(self, game,screen_size = (800,600)) -> None:
         self.game = game
-        self.maps = dict()
-        self.sprite_lists = dict()
-        self.map_name = None
+        self.map = [[]]
+        self.scale = 4
+        self.tile_size = 16
+        self.screen_size = screen_size
 
-    class Layers(Enum):
-        """ Represents any layer that can be present in a map for this game """
+        self.textures = self.load_textures("./resources/tilesets/KelpiesTileset.png")
+        self.sprites = []
 
-        ALL = 0
-        """ All layers on the map (includes Ground, Objects and Players) """
+    def load_textures(self, fp, tile_size=16):
+        tile_map = Image.open(fp)
+        map_width, map_height = tile_map.size
 
-        PLAYERS = "Players"
-        """ The layer that has the players """
+        tile_list = []
 
-        OBJECTS = "Objects"
-        """ The layer that has all activators, activables, holes, rails and carts """
+        for y in range(map_height//tile_size):
+            for x in range(map_width//tile_size):
+                # loop through the tiles on the img
+                croped_tile = tile_map.crop((x*tile_size, y*tile_size, x*tile_size+16, y*tile_size+16))
+                tile_list.append(croped_tile)
 
-        GROUND = "Ground"
-        """ The layer that has the walls, ground, glitches and tunnels """
+        # convert them to textures
+        return [arcade.Texture(name=n, image=img, hit_box_algorithm=None) for n, img in enumerate(tile_list)]
 
-    def load_map_data(self, map_name: str, scaling: float = 1.0) -> None:
+    def handle_assingment(self,sprite,tile):
+        match tile["type"]:
+            case (21):
+                self.player.set_sprite(sprite,21)
+            case (27):
+                self.player.set_sprite(sprite,27)
+
+
+
+    def generate_sprites(self):
+        for y, row in enumerate(self.map):
+            for x, tile in enumerate(row):
+                texture = self.textures[tile["type"]]
+                rotation = int(tile["rotation"])*90
+                sprite = arcade.Sprite(
+                    hit_box_algorithm=None,
+                    texture=texture,
+                    angle=rotation,
+                    scale=self.scale,
+                    center_x=
+                        x*self.tile_size*self.scale # calculate width of the map
+                        +(self.tile_size*self.scale)//2, # offset the map by half a tile to account of center positions
+                    center_y=
+                        self.screen_size[1] # sub from the top of the screen to make the Corrds like in pygame
+                        -y*self.tile_size*self.scale # calculate height of the map
+                        -(self.tile_size*self.scale)//2 # offset the map by half a tile to account of center positions
+                )
+                self.sprites.append(sprite)
+
+                self.handle_assingment(sprite, tile)
+
+    def load_map_data(self, map_name: str, player) -> None:
         """
         Load a tile map file from the resources/tilemaps folder
         :param str map_name: The name of the file without file extension
         :param float scaling: Factor by which the size of the map should be increased (default: 1)
         """
         # Loading the map
-        self.map_name = map_name
-        self.maps[map_name] = arcade.load_tilemap(f"./resources/tilemaps/{map_name}.tmx", scaling)
+        self.map = json.load(open(f"./resources/tilemaps/{map_name}.json", "r"))["Map"]
+        self.player = player
+        self.generate_sprites()
+        self.game.background = (43,137,137)
 
-        # Getting all the sprite layers in this map
-        self.sprite_lists[map_name] = self.maps[map_name].sprite_lists
-
-    def draw_layer(self, layer: Layers = Layers.ALL) -> None:
+    def draw_layer(self) -> None:
         """
         Draws one or all layer of a map to the screen
         :param str map_name: The name of the map
         :param Layers layer: The layer to be drawn (defaults to all)
         """
         if not self.game._setup:
-            if layer == self.Layers.ALL:
-                sprite_lists = self.sprite_lists[self.map_name]
-                for layer in sprite_lists:
-                    sprite_lists[layer].draw()
-            else:
-                self.sprite_lists[self.map_name][layer.value].draw()
+            arcade.draw_rectangle_filled((self.tile_size*len(self.map)*self.scale)//2, 
+                                            self.screen_size[1]-(self.tile_size*len(self.map)*self.scale)//2, 
+                                            self.tile_size*len(self.map)*self.scale, 
+                                            self.tile_size*len(self.map)*self.scale, 
+                                            (172,182,184))
+
+            for sprite in self.sprites:
+                sprite.draw(pixelated = True)
