@@ -195,7 +195,12 @@ class StartMenu:
                 self.update_loading_status(f"Connected successfully to {self.client_input.text}")
                 # Getting PlayerPosition set by the Server
                 # Get the message
-                player_choice_message = [msg for msg in c_manager.export_updates() if "PlayerChoice" in msg][0]
+                while True:
+                    try:
+                        player_choice_message = [msg for msg in c_manager.export_updates() if "PlayerChoice" in msg][0]
+                        break
+                    except IndexError:
+                        pass
                 # Getting just the Integer from the message
                 my_player = int(player_choice_message.replace("[PlayerChoice] ", ""))
                 # Pausing the Game for 1 Second for a better visual experience

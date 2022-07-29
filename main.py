@@ -45,11 +45,8 @@ class MyGame(arcade.Window):
         C_Manager is the CommunicationManager, My_Player is the random Player you are playing as. """
         # Gets Called when the Game Begins
         self._setup = False
-        self.maps_loader.load_map_data("tutorial1", 4)
-
-        player_layers = self.maps_loader.sprite_lists[self.maps_loader.map_name]["Players"]
-        player_sprite = player_layers[my_player]
-        self.player = player.Player(self, player_sprite)
+        self.player = player.Player(self,my_player)
+        self.maps_loader.load_map_data("tutorial1",self.player)
 
     def on_draw(self):
         """
