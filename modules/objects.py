@@ -30,8 +30,10 @@ class Door:
 
             self.sprite.texture = self.map_manager.textures[16]
             self.map_manager.collision.remove(self)
+            self.open = True
         elif amount > 0 and self.open:
             # Close the door by adding collision and chnaging the sprite
 
             self.sprite.texture = self.map_manager.textures[15]
             self.map_manager.collision.append(self)
+            self.open = False
