@@ -24,11 +24,8 @@ class Player:
         textures.append(arcade.Texture(name=f"fliped-{self.id}", image=fliped, hit_box_algorithm=None))
         return textures
 
-    def assing(self,sprite,s_id,map_manger):
-        if self.id == 0 and s_id == 21:
-            self.player = sprite
-        elif self.id == 1 and s_id == 27:
-            self.player = sprite
+    def assing(self,sprite,map_manger):
+        self.player = sprite
 
         self.map_manager = map_manger
         self.map_manager.needs_updates.append(self)
@@ -56,6 +53,8 @@ class Player:
                 self.player.texture = self.textures[2]
             case ("right"):
                 self.player.texture = self.textures[3]
+
+        self.game.c_manager.send_message(f"[Direction] {direction}")
                 
 
     def move(self,m_x,m_y):
@@ -118,8 +117,40 @@ class RobotPlayer:
 
         self.player = None
 
-    def set_sprite(self, sprite, s_id):
-        if self.id == 0 and s_id == 27:
-            self.player = sprite
-        elif self.id == 1 and s_id == 21:
-            self.player = sprite
+    def get_textures(self):
+        if self.id == 0:
+            textures = self.map_manager.textures[21:24]
+        else:
+            textures = self.map_manager.textures[27:30]
+        fliped = ImageOps.mirror(textures[0].image)
+        textures.append(arcade.Texture(name=f"fliped-{self.id}", image=fliped, hit_box_algorithm=None))
+        return textures
+
+    def assing(self, sprite, map_manager):
+        self.player = sprite
+
+        self.map_manager = map_manager
+        self.map_manager.needs_wb_updates.append(self)
+        self.textures = self.get_textures()
+
+    def facing(self,direction):
+        self.direction = direction
+
+        match direction:
+            case ("left"):
+                self.player.texture = self.textures[0]
+            case ("up"):
+                self.player.texture = self.textures[1]
+            case ("down"):
+                self.player.texture = self.textures[2]
+            case ("right"):
+                self.player.texture = self.textures[3]
+
+    def wb_update(self,update):
+        if "[Walk]" in update:
+            x, y = update.replace("[Walk] ", "").split(",")
+            self.player.center_x, self.player.center_y = int(x), int(y)
+
+        elif "[Direction]" in update:
+            direction = update.replace("[Direction] ", "")
+            self.facing(direction)

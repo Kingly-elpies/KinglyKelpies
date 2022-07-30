@@ -19,6 +19,7 @@ class MapManager:
         self.doors = []
         self.interactables = []
         self.needs_updates = []
+        self.needs_wb_updates = []
 
         self.loaded = False
 
@@ -48,6 +49,19 @@ class MapManager:
         # convert them to textures
         return [arcade.Texture(name=n, image=img, hit_box_algorithm=None) for n, img in enumerate(tile_list)]
 
+    def assing_player(self,sprite,s_id):
+        if self.player.id == 0:
+            if s_id == 21:
+                self.player.assing(sprite, self)
+            else:
+                self.sec_player.assing(sprite, self)
+        else:
+            if s_id == 27:
+                self.player.assing(sprite, self)
+            else:
+                self.sec_player.assing(sprite, self)
+
+
     def handle_assingment(self, sprite, tile, x, y):
         match tile["type"]:
             case (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12):  # walls
@@ -59,11 +73,9 @@ class MapManager:
             case (17 | 18 | 19): # Plates on| ("off" can't be default) | with box
                 objects.Plate(sprite, tile, self)
             case (21):  # P1
-                self.player.assing(sprite, 21, self)
-                self.sec_player.set_sprite(sprite, 27)
+                self.assing_player(sprite, 21)
             case (27):  # P2
-                self.player.assing(sprite, 27, self)
-                self.sec_player.set_sprite(sprite, 21)
+                self.assing_player(sprite, 27)
 
     def generate_sprites(self):
         for y, row in enumerate(self.map):
@@ -102,10 +114,14 @@ class MapManager:
         self.loaded = True
 
     def update(self) -> None:
-        """Updates the differend objects"""
+        """Updates the different objects"""
         if self.loaded:
             for obj in self.needs_updates:
                 obj.update()
+
+            for update in self.c_manager.export_updates():
+                for wb_obi in self.needs_wb_updates:
+                    wb_obi.wb_update(update)
 
     def trigger_interaction(self):
         pass

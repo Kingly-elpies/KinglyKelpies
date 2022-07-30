@@ -79,12 +79,6 @@ class MyGame(arcade.Window):
         """
         self.maps_loader.update()
 
-        if not self._setup:
-            for update in self.c_manager.export_updates():
-                if "[Walk]" in update:
-                    x, y = update.replace("[Walk] ", "").split(",")
-                    self.sec_player.player.center_x, self.sec_player.player.center_y = int(x), int(y)
-
     def on_key_press(self, key, key_modifiers):
         """
         Called whenever a key on the keyboard is pressed.
