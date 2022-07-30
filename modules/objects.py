@@ -10,13 +10,16 @@ class Wall:
 
 class Button:
 
-    def __init__(self,sprite,kwargs, map_manager):
+    def __init__(self,sprite,kwargs, x, y, map_manager):
         self.map_manager = map_manager
 
         self.sprite = sprite
 
         self.state = kwargs["state"]
         self.link_x,self.link_y = kwargs["link"]["x"], kwargs["link"]["y"]
+
+        self.x = x
+        self.y = y
 
         self.map_manager.interactables.append(self)
 
@@ -35,34 +38,42 @@ class Button:
 
 class Plate():
 
-    def __init__(self,sprite,kwargs, map_manager):
+    def __init__(self,sprite,kwargs, x, y, map_manager):
         self.map_manager = map_manager
 
         self.sprite = sprite
+
+        self.x = x
+        self.y = y
 
         self.state = kwargs["state"]
         self.link_x,self.link_y = kwargs["link"]["x"], kwargs["link"]["y"]
 
         self.down = False
+        self.forced = False
 
         self.map_manager.needs_updates.append(self)
 
+    def change_state(self,texture_id,amount,down,state):
+        self.sprite.texture = self.map_manager.textures[texture_id] #update own texture
+        self.map_manager.get_door(self.link_x,self.link_y).update_counter(amount) # update linked door
+    
+        self.down = down
+        self.state = state
+
+    def collision(self)->bool:
+        player_col = arcade.check_for_collision(self.sprite, self.map_manager.player.player)
+        sec_player_col = arcade.check_for_collision(self.sprite, self.map_manager.sec_player.player)
+        return bool(player_col + sec_player_col)
+
     def update(self):
-        if arcade.check_for_collision(self.sprite, self.map_manager.player.player) and not self.down:
+        if self.collision() and not self.down:
             # Plate down if a player is on it
+            self.change_state(18,-1,True,1)
 
-            self.sprite.texture = self.map_manager.textures[18]
-            self.map_manager.get_door(self.link_x,self.link_y).update_counter(-1) # update linked door
-
-            self.down = True
-
-        elif not arcade.check_for_collision(self.sprite, self.map_manager.player.player) and self.down: # plate up
+        elif not self.collision() and self.down: # plate up
             # Plate up if he isn't
-
-            self.sprite.texture = self.map_manager.textures[17]
-            self.map_manager.get_door(self.link_x,self.link_y).update_counter(1)
-            self.down = False
-
+            self.change_state(17,1,False,0)
 
 
 

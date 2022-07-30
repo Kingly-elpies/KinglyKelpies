@@ -66,15 +66,20 @@ class MapManager:
         match tile["type"]:
             case (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12):  # walls
                 objects.Wall(sprite, self)
-            case (13 | 14): # Buttons on | off
-                objects.Button(sprite, tile, self)
-            case (15 | 16): # Door closed | Door open
+            case (13 | 14): 
+                # Buttons on | off
+                objects.Button(sprite, tile, x, y, self)
+            case (15 | 16): 
+                # Door closed | Door open
                 objects.Door(sprite, tile, x, y, self)
-            case (17 | 18 | 19): # Plates on| ("off" can't be default) | with box
-                objects.Plate(sprite, tile, self)
-            case (21):  # P1
+            case (17 | 18 | 19): 
+                # Plates on| ("off" can't be default) | with box
+                objects.Plate(sprite, tile, x, y, self)
+            case (21):
+                # Blue
                 self.assing_player(sprite, 21)
-            case (27):  # P2
+            case (27):
+                # Red
                 self.assing_player(sprite, 27)
 
     def generate_sprites(self):
