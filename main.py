@@ -32,11 +32,18 @@ class MyGame(arcade.Window):
     def game(self, c_manager):
         # Gets Called when the Game Begins
         self._setup = False
+<<<<<<< Updated upstream
 
         # Temporary Pause to allow other client to connect
         arcade.pause(3)
         c_manager.send_message("Test Data")
         print(c_manager.export_updates())
+=======
+        self.c_manager = c_manager
+        self.player = player.Player(self,my_player)
+        self.sec_player = player.RobotPlayer(self, my_player)
+        self.maps_loader.load_map_data("tutorial1", self.player, self.sec_player)
+>>>>>>> Stashed changes
 
     def on_draw(self):
         """
@@ -65,7 +72,15 @@ class MyGame(arcade.Window):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
+<<<<<<< Updated upstream
         pass
+=======
+        if not self._setup:
+            for update in self.c_manager.export_updates():
+                if "[Walk]" in update:
+                    x, y = update.replace("[Walk] ", "").split(",")
+                    self.sec_player.player.center_x, self.sec_player.player.center_y = int(x), int(y)
+>>>>>>> Stashed changes
 
     def on_key_press(self, key, key_modifiers):
         """
