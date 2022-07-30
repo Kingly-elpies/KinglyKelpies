@@ -17,6 +17,10 @@ class MapManager:
 
         self.collision = []
         self.doors = []
+        self.interactables = []
+        self.needs_updates = []
+
+        self.loaded = False
 
     def will_collide(self, x, y):
         for collidable in self.collision:
@@ -48,8 +52,12 @@ class MapManager:
         match tile["type"]:
             case (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12):  # walls
                 objects.Wall(sprite, self)
-            case (15): # Doors
+            case (13 | 14): # Buttons on | off
+                objects.Button(sprite, tile, self)
+            case (15 | 16): # Door closed | Door open
                 objects.Door(sprite, tile, x, y, self)
+            case (17 | 18 | 19): # Plates on| ("off" can't be default) | with box
+                objects.Plate(sprite, tile, self)
             case (21):  # P1
                 self.player.assing(sprite, 21, self)
             case (27):  # P2
@@ -75,7 +83,7 @@ class MapManager:
 
                 self.handle_assingment(sprite, tile, x, y)
 
-    def load_map_data(self, map_name: str, player) -> None:
+    def load_map_data(self, map_name: str, player, c_manager) -> None:
         """
         Load a tile map file from the resources/tilemaps folder
         :param str map_name: The name of the file without file extension
@@ -84,8 +92,20 @@ class MapManager:
         # Loading the map
         self.map = json.load(open(f"./resources/tilemaps/{map_name}.json", "r"))["Map"]
         self.player = player
+        self.c_manager = c_manager
         self.generate_sprites()
         self.game.background = (43, 137, 137)
+
+        self.loaded = True
+
+    def update(self) -> None:
+        """Updates the differend objects"""
+        if self.loaded:
+            for obj in self.needs_updates:
+                obj.update()
+
+    def trigger_interaction(self):
+        pass
 
     def draw_layer(self) -> None:
         """
@@ -102,3 +122,7 @@ class MapManager:
 
             for sprite in self.sprites:
                 sprite.draw(pixelated=True)
+
+            if self.player.can_interact_with is not None:
+                self.player.interact_e.draw(pixelated=True)
+                

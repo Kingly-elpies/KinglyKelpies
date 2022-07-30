@@ -20,7 +20,6 @@ class MyGame(arcade.Window):
 
         self.background = (61, 169, 143)
         self.default_args = dict(vars(self))
-        self.physics_engines = []
         # If you have sprite lists, you should create them here,
         # and set them to None
 
@@ -46,7 +45,7 @@ class MyGame(arcade.Window):
         # Gets Called when the Game Begins
         self._setup = False
         self.player = player.Player(self,my_player)
-        self.maps_loader.load_map_data("tutorial1",self.player)
+        self.maps_loader.load_map_data("tutorial1",self.player, c_manager)
 
     def on_draw(self):
         """
@@ -74,7 +73,7 @@ class MyGame(arcade.Window):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
-        pass
+        self.maps_loader.update()
 
     def on_key_press(self, key, key_modifiers):
         """
