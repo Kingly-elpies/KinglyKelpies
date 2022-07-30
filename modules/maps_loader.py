@@ -15,10 +15,12 @@ class MapManager:
         self.textures = self.load_textures("./resources/tilesets/KelpiesTileset.png")
         self.sprites = []
 
-        self.collision = []
-        self.doors = []
+        self.doors  = []
+        self.boxes  = []
+        self.plates = []
+
         self.interactables = []
-        self.boxes = []
+        self.collision = []
         self.needs_updates = []
         self.needs_wb_updates = []
 
@@ -130,9 +132,6 @@ class MapManager:
             for update in self.c_manager.export_updates():
                 for wb_obi in self.needs_wb_updates:
                     wb_obi.wb_update(update)
-
-    def trigger_interaction(self):
-        pass
 
     def draw_layer(self) -> None:
         """

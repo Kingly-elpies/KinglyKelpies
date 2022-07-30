@@ -67,6 +67,7 @@ class Plate:
         self.forced = False
 
         self.map_manager.needs_updates.append(self)
+        self.map_manager.plates.append(self)
 
     def change_state(self, texture_id, amount, down, state):
         self.sprite.texture = self.map_manager.textures[texture_id]  # update own texture
@@ -78,7 +79,12 @@ class Plate:
     def collision(self) -> bool:
         player_col = arcade.check_for_collision(self.sprite, self.map_manager.player.player)
         sec_player_col = arcade.check_for_collision(self.sprite, self.map_manager.sec_player.player)
-        return bool(player_col + sec_player_col)
+        box_collision = False
+        for box in self.map_manager.boxes:
+            if arcade.check_for_collision(self.sprite, box.sprite):
+                box_collision = True
+
+        return bool(player_col + sec_player_col + box_collision)
 
     def update(self):
         if self.collision() and not self.down:
@@ -133,6 +139,7 @@ class Box:
         self.y = y
 
         self.map_manager.boxes.append(self)
+        self.map_manager.needs_wb_updates.append(self)
 
         self.picked_up = False
 
@@ -140,12 +147,36 @@ class Box:
         if not self.picked_up and not who.has_box:
             who.pick_up(self)
             self.picked_up = True
-            self.sprite.texture = self.map_manager.textures[39]
-            self.map_manager.boxes.remove(self)
+            self.hide()
+
+    def hide(self):
+        self.sprite.texture = self.map_manager.textures[39]
+        self.map_manager.boxes.remove(self)
+
+    def show(self, who):
+        self.sprite.center_x, self.sprite.center_y, = who.player.center_x, who.player.center_y
+        self.getSpriteCollison()
+        self.map_manager.boxes.append(self)
 
     def put_down(self, who):
         if self.picked_up:
             self.picked_up = False
+            self.show(who)
+
+    def getSpriteCollison(self):
+        collides = False
+        for plate in self.map_manager.plates:
+            if arcade.check_for_collision(self.sprite, plate.sprite):
+                collides = True
+
+        if collides:
+            self.sprite.texture = self.map_manager.textures[19]
+        else:
             self.sprite.texture = self.map_manager.textures[20]
-            self.sprite.center_x, self.sprite.center_y, = who.player.center_x, who.player.center_y
-            self.map_manager.boxes.append(self)
+
+    def wb_update(self, update):
+        if "[Box]" in update:
+            if arcade.check_for_collision(self.sprite, self.map_manager.sec_player.player) or self.picked_up:
+                self.show(self.map_manager.sec_player) if self.picked_up else self.hide()
+                self.map_manager.sec_player.sprite_update_box()
+                self.picked_up = not self.picked_up

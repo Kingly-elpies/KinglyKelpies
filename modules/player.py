@@ -124,6 +124,8 @@ class Player:
             self.swap_textures()
             self.facing(self.direction)
 
+            self.game.c_manager.send_message(f"[Box]")
+
     def put_down(self):
         if self.has_box:
             self.swap_textures()
@@ -133,6 +135,8 @@ class Player:
 
             self.has_box = False
             self.box = None
+
+            self.game.c_manager.send_message(f"[Box]")
 
     def update(self):
         found = False
@@ -162,7 +166,7 @@ class Player:
                 self.interact_q.center_y = self.get_pos()[1] + self.q_offset[1]
                 found_box = True
                 break
-        
+
         if not found_box:
             self.can_pick_up = None
 
@@ -182,13 +186,13 @@ class RobotPlayer:
 
         self.player = None
 
-    def get_textures(self):
+    def get_textures(self, offset=0):
         if self.id == 0:
-            textures = self.map_manager.textures[21:24]
+            textures = self.map_manager.textures[21+offset:24+offset]
         else:
-            textures = self.map_manager.textures[27:30]
+            textures = self.map_manager.textures[27+offset:30+offset]
         fliped = ImageOps.mirror(textures[0].image)
-        textures.append(arcade.Texture(name=f"fliped-{self.id}", image=fliped, hit_box_algorithm=None))
+        textures.append(arcade.Texture(name=f"fliped-{self.id}-{offset}", image=fliped, hit_box_algorithm=None))
         return textures
 
     def assing(self, sprite, map_manager):
@@ -197,6 +201,13 @@ class RobotPlayer:
         self.map_manager = map_manager
         self.map_manager.needs_wb_updates.append(self)
         self.textures = self.get_textures()
+        self.secondary_textures = self.get_textures(3)
+
+    def sprite_update_box(self):
+        old_textures = self.textures.copy()
+        self.textures = self.secondary_textures
+        self.secondary_textures = old_textures
+        self.facing(self.direction)
 
     def facing(self, direction):
         self.direction = direction
