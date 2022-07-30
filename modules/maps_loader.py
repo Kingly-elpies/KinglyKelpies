@@ -18,6 +18,7 @@ class MapManager:
         self.collision = []
         self.doors = []
         self.interactables = []
+        self.boxes = []
         self.needs_updates = []
         self.needs_wb_updates = []
 
@@ -66,13 +67,13 @@ class MapManager:
         match tile["type"]:
             case (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12):  # walls
                 objects.Wall(sprite, self)
-            case (13 | 14): 
+            case (13 | 14):
                 # Buttons on | off
                 objects.Button(sprite, tile, x, y, self)
-            case (15 | 16): 
+            case (15 | 16):
                 # Door closed | Door open
                 objects.Door(sprite, tile, x, y, self)
-            case (17 | 18 | 19): 
+            case (17 | 18 | 19):
                 # Plates on| ("off" can't be default) | with box
                 objects.Plate(sprite, tile, x, y, self)
             case (21):
@@ -81,6 +82,8 @@ class MapManager:
             case (27):
                 # Red
                 self.assing_player(sprite, 27)
+            case (20):
+                objects.Box(sprite, x, y, self)
 
     def generate_sprites(self):
         for y, row in enumerate(self.map):
@@ -149,4 +152,7 @@ class MapManager:
 
             if self.player.can_interact_with is not None:
                 self.player.interact_e.draw(pixelated=True)
+
+            if self.player.has_box or self.player.can_pick_up:
+                self.player.interact_q.draw(pixelated=True)
                 

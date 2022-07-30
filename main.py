@@ -100,8 +100,7 @@ class MyGame(arcade.Window):
         """
         Called whenever the user lets off a previously pressed key.
         """
-        if not self._setup:
-            self.player.player_key_release(key, key_modifiers)
+        pass
 
     def on_mouse_motion(self, x, y, delta_x, delta_y):
         """

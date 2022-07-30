@@ -7,6 +7,7 @@ from modules import websocket_communication as websocket
 
 
 class StartMenu:
+
     def __init__(self, game):
         self.game = game
         # Setting Initial Variables

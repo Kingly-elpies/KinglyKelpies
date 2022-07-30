@@ -2,6 +2,7 @@ import arcade
 import arcade.gui
 
 class PauseMenu:
+
     def __init__(self, game):
         self.game = game
         # Setting the _escape Value to know if the Escape Menu should be opened
