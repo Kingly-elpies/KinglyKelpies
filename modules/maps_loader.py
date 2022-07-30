@@ -86,6 +86,8 @@ class MapManager:
                 self.assing_player(sprite, 27)
             case (20):
                 objects.Box(sprite, x, y, self)
+            case (34):
+                objects.Hole(sprite, x, y, self)
 
     def generate_sprites(self):
         for y, row in enumerate(self.map):

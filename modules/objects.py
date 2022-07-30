@@ -180,3 +180,22 @@ class Box:
                 self.show(self.map_manager.sec_player) if self.picked_up else self.hide()
                 self.map_manager.sec_player.sprite_update_box()
                 self.picked_up = not self.picked_up
+
+class Hole:
+
+    def __init__(self, sprite, x, y, map_manager):
+        self.sprite = sprite
+
+        self.map_manager = map_manager
+
+        self.map_manager.needs_updates.append(self)
+        self.map_manager.collision.append(self)
+
+    def update(self):
+        for box in self.map_manager.boxes:
+            if arcade.get_distance_between_sprites(self.sprite, box.sprite) < self.sprite.width+1 and not box.picked_up:
+                box.hide()
+                box.picked_up = True
+                self.sprite.texture = self.map_manager.textures[35]
+                self.map_manager.needs_updates.remove(self)
+                self.map_manager.collision.remove(self)
