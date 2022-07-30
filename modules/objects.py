@@ -107,13 +107,13 @@ class Door:
     def update_counter(self, amount):
         self.counter += amount
 
-        if amount <= 0 and not self.open:
+        if self.counter <= 0 and not self.open:
             # Open the door by removing collison and changing the sprite
 
             self.sprite.texture = self.map_manager.textures[16]
             self.map_manager.collision.remove(self)
             self.open = True
-        elif amount > 0 and self.open:
+        elif self.counter > 0 and self.open:
             # Close the door by adding collision and chnaging the sprite
 
             self.sprite.texture = self.map_manager.textures[15]
