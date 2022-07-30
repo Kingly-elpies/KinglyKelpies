@@ -66,6 +66,8 @@ class Player:
             self.player.center_x = temp_center_x
             self.player.center_y = temp_center_y
 
+            self.game.c_manager.send_message(f"[Walk] {self.player.center_x},{self.player.center_y}")
+
     def run_interact(self):
         if self.can_interact_with is not None:
             self.can_interact_with.interact()
@@ -107,3 +109,17 @@ class Player:
         #         self.player.center_y = 0
         #     case (arcade.key.A|arcade.key.LEFT|arcade.key.D|arcade.key.RIGHT):
         #         self.player.change_x = 0
+
+class RobotPlayer:
+    def __init__(self, game, player_id):
+        self.game = game
+        # Getting the Oposite of the PLayersNumber (0=1, 1)
+        self.id = int(not(player_id))
+
+        self.player = None
+
+    def set_sprite(self, sprite, s_id):
+        if self.id == 0 and s_id == 27:
+            self.player = sprite
+        elif self.id == 1 and s_id == 21:
+            self.player = sprite

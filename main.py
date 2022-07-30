@@ -44,8 +44,12 @@ class MyGame(arcade.Window):
         C_Manager is the CommunicationManager, My_Player is the random Player you are playing as. """
         # Gets Called when the Game Begins
         self._setup = False
+
+        self.c_manager = c_manager
         self.player = player.Player(self,my_player)
-        self.maps_loader.load_map_data("tutorial1",self.player, c_manager)
+        self.sec_player = player.RobotPlayer(self, my_player)
+
+        self.maps_loader.load_map_data("tutorial1",self.player, self.sec_player,c_manager)
 
     def on_draw(self):
         """
@@ -74,6 +78,12 @@ class MyGame(arcade.Window):
         need it.
         """
         self.maps_loader.update()
+
+        if not self._setup:
+            for update in self.c_manager.export_updates():
+                if "[Walk]" in update:
+                    x, y = update.replace("[Walk] ", "").split(",")
+                    self.sec_player.player.center_x, self.sec_player.player.center_y = int(x), int(y)
 
     def on_key_press(self, key, key_modifiers):
         """

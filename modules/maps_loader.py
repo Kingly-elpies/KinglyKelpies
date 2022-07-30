@@ -60,8 +60,10 @@ class MapManager:
                 objects.Plate(sprite, tile, self)
             case (21):  # P1
                 self.player.assing(sprite, 21, self)
+                self.sec_player.set_sprite(sprite, 27)
             case (27):  # P2
                 self.player.assing(sprite, 27, self)
+                self.sec_player.set_sprite(sprite, 21)
 
     def generate_sprites(self):
         for y, row in enumerate(self.map):
@@ -83,7 +85,7 @@ class MapManager:
 
                 self.handle_assingment(sprite, tile, x, y)
 
-    def load_map_data(self, map_name: str, player, c_manager) -> None:
+    def load_map_data(self, map_name: str, player,sec_player, c_manager) -> None:
         """
         Load a tile map file from the resources/tilemaps folder
         :param str map_name: The name of the file without file extension
@@ -92,6 +94,7 @@ class MapManager:
         # Loading the map
         self.map = json.load(open(f"./resources/tilemaps/{map_name}.json", "r"))["Map"]
         self.player = player
+        self.sec_player = sec_player
         self.c_manager = c_manager
         self.generate_sprites()
         self.game.background = (43, 137, 137)
