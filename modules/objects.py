@@ -22,10 +22,9 @@ class Button:
         self.y = y
 
         self.map_manager.interactables.append(self)
+        self.map_manager.needs_wb_updates.append(self)
 
-    def interact(self):
-        self.state = (self.state + 1)%2
-
+    def change_state(self):
         if self.state == 1: # button pressed
             texture = self.map_manager.textures[14]
             amount = -1
@@ -35,6 +34,18 @@ class Button:
 
         self.sprite.texture = texture #update texture
         self.map_manager.get_door(self.link_x,self.link_y).update_counter(amount) # update linked door
+
+    def interact(self):
+        self.state = (self.state + 1)%2
+        self.change_state()
+        self.map_manager.c_manager.send_message(f"[Button] {self.x},{self.y},{self.state}")
+
+    def wb_update(self,update:str):
+        if "[Button]" in update:
+            x,y,state = update.replace("[Button] ", "").split(",")
+            if (int(x),int(y)) == (self.x,self.y):
+                self.state = int(state)
+                self.change_state()
 
 class Plate():
 
