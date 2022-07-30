@@ -101,7 +101,7 @@ class Door:
         self.x = x
         self.y = y
         
-        self.counter = kwargs["counter"]
+        self.counter = int(kwargs["counter"])
         self.open = False
 
     def update_counter(self, amount):

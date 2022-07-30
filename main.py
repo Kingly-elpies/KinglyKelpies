@@ -49,7 +49,7 @@ class MyGame(arcade.Window):
         self.player = player.Player(self,my_player)
         self.sec_player = player.RobotPlayer(self, my_player)
 
-        self.maps_loader.load_map_data("tutorial1",self.player, self.sec_player,c_manager)
+        self.maps_loader.load_map_data("test_map",self.player, self.sec_player,c_manager)
 
     def on_draw(self):
         """
