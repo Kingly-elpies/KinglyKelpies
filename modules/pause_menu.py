@@ -2,6 +2,7 @@ import arcade
 import arcade.gui
 
 class PauseMenu:
+
     def __init__(self, game):
         self.game = game
         # Setting the _escape Value to know if the Escape Menu should be opened
@@ -50,6 +51,7 @@ class PauseMenu:
         @quit_button.event("on_click")
         def on_quit_click(event):
             self.game.close()
+            self.game.c_manager.send_message("websocket.disconnect")
             arcade.exit()
 
         # Adding the BackgroundUI and the EscapeVBox to the EscapeUI
