@@ -183,9 +183,7 @@ class MapManager:
                 obj.clean()
 
             if self.sec_player.won and self.player.won:
-                self.game.close()
-                self.game.c_manager.send_message("websocket.disconnect")
-                arcade.exit()
+                self.game.next_level()
 
     def draw_layer(self) -> None:
         """

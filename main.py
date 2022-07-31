@@ -52,9 +52,20 @@ class MyGame(arcade.Window):
         self.player = player.Player(self, my_player)
         self.sec_player = player.RobotPlayer(self, my_player)
 
-        self.maps_loader.load_map_data("test_map", self.player, self.sec_player, c_manager)
+        self.maps_loader.load_map_data("tutorial1", self.player, self.sec_player, c_manager)
         # Play ShitMusic
         self.play_sound("./resources/music-tobu-infectious.mp3")
+
+        self.my_player = my_player
+
+    def next_level(self):
+        if self._setup == False:
+            self.maps_loader = maps_loader.MapManager(self)
+
+            self.player = player.Player(self, self.my_player)
+            self.sec_player = player.RobotPlayer(self, self.my_player)
+
+            self.maps_loader.load_map_data("test_map", self.player, self.sec_player, self.c_manager)
 
     def on_draw(self):
         """
@@ -100,6 +111,9 @@ class MyGame(arcade.Window):
         #
         if not self._setup:
             self.player.player_key_press(key, key_modifiers)
+
+        if key == arcade.key.N:
+            self.next_level()
 
     def on_key_release(self, key, key_modifiers):
         """
