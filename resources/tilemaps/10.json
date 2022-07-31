@@ -549,7 +549,7 @@
             {
                 "type": 16,
                 "rotation": 0,
-                "counter": 0
+                "counter": 1
             },
             {
                 "type": 4,
@@ -639,7 +639,7 @@
             {
                 "type": 16,
                 "rotation": 0,
-                "counter": 0
+                "counter": 1
             },
             {
                 "type": 5,
