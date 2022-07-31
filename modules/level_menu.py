@@ -69,7 +69,7 @@ class LevelMenu:
             self.unlevel()
             self.game.pause_menu.pause()
             try:
-                if int(self.level_input.text) in range(-1,16):
+                if int(self.level_input.text) in range(-1,14):
                     self.game.next_level(level=self.level_input.text)
             except ValueError:
                 pass

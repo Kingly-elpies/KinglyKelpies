@@ -23,7 +23,7 @@ class PauseMenu:
                                 height=self.game._height+10, color=(0, 0, 0, 170))
         self.escape_ui.add(bg)
         # Adding the Games Title and a "Pause Menu" Text
-        self.title = arcade.gui.UILabel(text="for level_id in range(16)", font_name=(
+        self.title = arcade.gui.UILabel(text="for level_id in range(14)", font_name=(
             "calibri", "arial"), font_size=20, text_color=arcade.color.AMARANTH_PINK, bold=True, dpi=200, align="center")
         self.pause_title = arcade.gui.UILabel(text="Pause Menu", font_name=(
             "calibri", "arial"), font_size=10, text_color=arcade.color.AMARANTH_PINK, bold=True, dpi=200, align="center")

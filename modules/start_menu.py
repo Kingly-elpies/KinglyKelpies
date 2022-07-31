@@ -70,7 +70,7 @@ class StartMenu:
         # Creating new fresh UIBoxLayout (VBox)
         self.v_box = arcade.gui.UIBoxLayout()
         # Always add/stay on top
-        self.title = arcade.gui.UILabel(text="for list in list(range(int('16'))", font_name=("calibri", "arial"), font_size=14,
+        self.title = arcade.gui.UILabel(text="for list in list(range(int('14'))", font_name=("calibri", "arial"), font_size=14,
                                         text_color=self.game.default_style["font_color"], bold=True, dpi=200, align="center")
         # Adding Title to the VBox and the VBox to the UIManager
         self.v_box.add(self.title.with_space_around(bottom=100))
