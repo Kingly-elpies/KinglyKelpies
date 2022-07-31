@@ -66,6 +66,8 @@ class Player:
             center_x=0,
             center_y=0)
 
+        self.won = False
+
     def get_pos(self):
         return (self.player.center_x, self.player.center_y)
 
@@ -224,6 +226,8 @@ class RobotPlayer:
         self.map_manager.needs_wb_updates.append(self)
         self.textures = self.get_textures()
         self.secondary_textures = self.get_textures(3)
+
+        self.won = False
 
     def sprite_update_box(self):
         old_textures = self.textures.copy()

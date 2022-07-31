@@ -44,9 +44,9 @@ class PauseMenu:
             def on_level_click(event):
                 self.game.level_menu.level()
         # Creating a Restart Button
-        restart_button = arcade.gui.UIFlatButton(
-            x=self.game._width//2, y=self.game._height//2-200, width=150, height=50, text="Restart Game", style=self.game.default_style)
-        self.escape_v_box.add(restart_button.with_space_around(bottom=20))
+        reload_button = arcade.gui.UIFlatButton(
+            x=self.game._width//2, y=self.game._height//2-200, width=150, height=50, text="Reload Level", style=self.game.default_style)
+        self.escape_v_box.add(reload_button.with_space_around(bottom=20))
         # Creating a Quit Button
         quit_button = arcade.gui.UIFlatButton(x=self.game._width//2, y=self.game._height
                                               // 2-200, width=150, height=50, text="Quit Game", style=self.game.default_style)
@@ -59,9 +59,10 @@ class PauseMenu:
             self.unpause()
 
         # Restarting the Game when clicking the RestartButton
-        @restart_button.event("on_click")
+        @reload_button.event("on_click")
         def on_restart_click(event):
-            self.game.setup()
+            self.game.maps_loader.load_map_data(
+                    self.game.maps_loader.map_name, self.game.player, self.game.maps_loader.sec_player, self.game.maps_loader.c_manager)
 
         # Quiting the Game when clicking the QuitButton
         # This doesnt quit the Interpreter

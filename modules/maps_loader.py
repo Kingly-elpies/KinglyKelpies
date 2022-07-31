@@ -177,10 +177,7 @@ class MapManager:
                 for wb_obi in self.needs_wb_updates:
                     wb_obi.wb_update(update)
 
-                if "[Won]" in update:
-                    self.sec_player.won = True
-
-                elif "[level]" in update:
+                if "[level]" in update:
                     self.game.next_level(update.replace("[level] ",""),self_triggered=False)
 
             for obj in self.all_tiles:
@@ -196,9 +193,9 @@ class MapManager:
         :param Layers layer: The layer to be drawn (defaults to all)
         """
         if not self.game._setup:
-            arcade.draw_rectangle_filled((self.tile_size*len(self.map)*self.scale)//2,
+            arcade.draw_rectangle_filled((self.tile_size*len(self.map[0])*self.scale)//2,
                                          self.screen_size[1]-(self.tile_size*len(self.map)*self.scale)//2,
-                                         self.tile_size*len(self.map)*self.scale,
+                                         self.tile_size*len(self.map[0])*self.scale,
                                          self.tile_size*len(self.map)*self.scale,
                                          (172, 182, 184))
 
