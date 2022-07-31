@@ -1,5 +1,6 @@
 import arcade
 from PIL import ImageOps
+from datetime import datetime
 
 
 class Player:
@@ -109,8 +110,8 @@ class Player:
                 self.run_interact()
             case (arcade.key.Q):
                 self.handle_box()
-            case (arcade.key.X):
-                self.map_manager.get_door(2, 5).update_counter(-1)
+            case (arcade.key.R):
+                self.map_manager.load_map_data("test_map", self, self.map_manager.sec_player, self.map_manager.c_manager)
 
     def swap_textures(self):
         old_textures = self.textures.copy()

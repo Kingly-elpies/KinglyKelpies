@@ -21,10 +21,14 @@ class MapManager:
         self.box_obj = []
         self.plates = []
 
+        self.all_tiles = []
+
         self.interactables = []
         self.collision = []
         self.needs_updates = []
         self.needs_wb_updates = []
+
+        self.list_of_lists = [self.sprites,self.doors,self.boxes,self.box_obj,self.plates,self.all_tiles,self.interactables,self.collision,self.needs_updates,self.needs_wb_updates]
 
         self.loaded = False
 
@@ -70,7 +74,7 @@ class MapManager:
     def handle_assingment(self, sprite, tile, x, y):
         match tile["type"]:
             case (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12):  # walls
-                objects.Wall(sprite, self)
+                objects.Wall(sprite, x, y, self)
             case (13 | 14):
                 # Buttons on | off
                 objects.Button(sprite, tile, x, y, self)
@@ -158,6 +162,9 @@ class MapManager:
             for update in self.c_manager.export_updates():
                 for wb_obi in self.needs_wb_updates:
                     wb_obi.wb_update(update)
+
+            for obj in self.all_tiles:
+                obj.clean()
 
     def draw_layer(self) -> None:
         """

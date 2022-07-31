@@ -1,21 +1,46 @@
 import arcade
+from datetime import datetime
 
+class Blank:
 
-class Wall:
-
-    def __init__(self, sprite, map_manager):
+    def __init__(self, sprite, x, y, map_manager):
         self.map_manager = map_manager
-
         self.sprite = sprite
+
+        self.x = x
+        self.y = y
+
+        self.creation = datetime.now().timestamp()
+        self.map_manager.all_tiles.append(self)
+
+    def delete_references(self):
+        for l in self.map_manager.list_of_lists:
+            try:
+                if self in l:
+                    l.remove(self)
+                
+                elif self.sprite in l:
+                    l.remove(self.sprite)
+            except AttributeError:
+                pass
+
+    def clean(self):
+        for tile in self.map_manager.all_tiles:
+            if arcade.check_for_collision(self.sprite, tile.sprite):
+                if (tile.x,tile.y) == (self.x,self.y) and tile.creation < self.creation and type(tile) is type(self):
+                    self.delete_references()
+
+class Wall(Blank):
+
+    def __init__(self, sprite, x, y, map_manager):
+        super().__init__(sprite, x, y, map_manager)
         self.map_manager.collision.append(self)
 
 
-class Button:
+class Button(Blank):
 
     def __init__(self, sprite, kwargs, x, y, map_manager):
-        self.map_manager = map_manager
-
-        self.sprite = sprite
+        super().__init__(sprite, x, y, map_manager)
 
         self.state = kwargs["state"]
         if type(kwargs["link"]) is list:
@@ -24,9 +49,6 @@ class Button:
             self.link_list = False
 
         self.link = kwargs["link"]
-
-        self.x = x
-        self.y = y
 
         self.map_manager.interactables.append(self)
         self.map_manager.needs_wb_updates.append(self)
@@ -65,15 +87,10 @@ class Button:
                 self.change_state()
 
 
-class Plate:
+class Plate(Blank):
 
     def __init__(self, sprite, kwargs, x, y, map_manager):
-        self.map_manager = map_manager
-
-        self.sprite = sprite
-
-        self.x = x
-        self.y = y
+        super().__init__(sprite, x, y, map_manager)
 
         self.state = kwargs["state"]
         if type(kwargs["link"]) is list:
@@ -126,17 +143,13 @@ class Plate:
             self.change_state(17, 1, False, 0)
 
 
-class Door:
+class Door(Blank):
 
     def __init__(self, sprite, kwargs, x, y, map_manager):
-        self.map_manager = map_manager
+        super().__init__(sprite, x, y, map_manager)
 
-        self.sprite = sprite
         self.map_manager.collision.append(self)
         self.map_manager.doors.append(self)
-
-        self.x = x
-        self.y = y
 
         self.counter = int(kwargs["counter"])
         self.open = False
@@ -158,20 +171,16 @@ class Door:
             self.open = False
 
 
-class Box:
+class Box(Blank):
 
     def __init__(self, sprite, x, y, map_manager):
-        self.sprite = sprite
-
-        self.map_manager = map_manager
-
-        self.x = x # not actual position used as identifier
-        self.y = y
+        super().__init__(sprite, x, y, map_manager)
 
         self.map_manager.boxes.append(self)
         self.map_manager.box_obj.append(self)
 
         self.map_manager.needs_wb_updates.append(self)
+        # self.map_manager.needs_updates.append(self)
 
         self.picked_up = False
 
@@ -181,6 +190,17 @@ class Box:
             self.picked_up = True
             self.hide()
             self.map_manager.c_manager.send_message(f"[Box] {self.x},{self.y},1")
+
+    # def update(self):
+    #     if not self.picked_up:
+    #         for box in self.map_manager.boxes:
+    #             if arcade.check_for_collision(self.sprite, box.sprite):
+    #                 if (box.x,box.y) == (self.x,self.y) and box.creation < self.creation:
+    #                     self.map_manager.boxes.remove(self)
+    #                     self.map_manager.box_obj.remove(self)
+    #                     self.map_manager.needs_wb_updates.remove(self)
+    #                     self.map_manager.needs_updates.remove(self)
+    #                     self.map_manager.sprites.remove(self.sprite)
 
     def hide(self):
         self.sprite.texture = self.map_manager.textures[39]
@@ -219,12 +239,10 @@ class Box:
                     self.show(self.map_manager.sec_player)
                     self.map_manager.sec_player.sprite_update_box()
 
-class Hole:
+class Hole(Blank):
 
     def __init__(self, sprite, x, y, map_manager):
-        self.sprite = sprite
-
-        self.map_manager = map_manager
+        super().__init__(sprite, x, y, map_manager)
 
         self.map_manager.needs_updates.append(self)
         self.map_manager.collision.append(self)

@@ -41,15 +41,15 @@ class StartMenu:
         self.game.default_style = {
             "font_name": ("calibri", "arial"),
             "font_size": 15,
-            "font_color": (173,227,124), # (110, 200, 137) arcade.color.AMARANTH_PINK
+            "font_color": (173, 227, 124),  # (110, 200, 137) arcade.color.AMARANTH_PINK
             "border_width": 2,
             "border_color": None,
             "bg_color": (43, 137, 137),
 
             # used if button is pressed
             "bg_color_pressed": arcade.color.EERIE_BLACK,
-            "border_color_pressed": (173,227,124),  # also used when hovered
-            "font_color_pressed": (173,227,124),
+            "border_color_pressed": (173, 227, 124),  # also used when hovered
+            "font_color_pressed": (173, 227, 124),
         }
 
     def play_sound(self, filename):
@@ -57,7 +57,7 @@ class StartMenu:
         sound = arcade.Sound(file_name=filename)
         # Checking if File is a Music file and Music is allowed by Settings
         if "music" in filename and self.game.music:
-            sound.play(volume=self.game.volume / 100)
+            sound.play(volume=self.game.volume / 100, loop=True)
         # Checking if File is a Sound file and Sound is allowed by Settings
         elif "sound" not in filename and self.game.sound:
             sound.play(volume=self.game.volume / 100)
@@ -125,7 +125,8 @@ class StartMenu:
                                                    text_color=self.game.default_style["font_color"], multiline=False,
                                                    size_hint_min=None, size_hint_max=None)
 
-        self.input_border = arcade.gui.UIBorder(child=self.client_input, border_color=self.game.default_style["bg_color"])
+        self.input_border = arcade.gui.UIBorder(
+            child=self.client_input, border_color=self.game.default_style["bg_color"])
         self.v_box.add(self.input_border.with_space_around(bottom=20))
 
         # Deleting the Default Text from the Client Input when its clicked
@@ -224,7 +225,8 @@ class StartMenu:
                                                    font_name=('Arial',), font_size=12,
                                                    text_color=self.game.default_style["font_color"], multiline=False,
                                                    size_hint_min=None, size_hint_max=None)
-        self.input_border = arcade.gui.UIBorder(child=self.server_input, border_color=self.game.default_style["bg_color"])
+        self.input_border = arcade.gui.UIBorder(
+            child=self.server_input, border_color=self.game.default_style["bg_color"])
         self.v_box.add(self.input_border.with_space_around(bottom=20))
 
         # Deleting the Default Text from the Server Input when its clicked
@@ -299,7 +301,7 @@ class StartMenu:
                 # Set the Message to the Server beeing successfully opened
                 self.update_loading_status(f"Host opened successfully on {self.server_input.text}")
                 # Selecting own Player by randomization
-                my_player = random.randint(0,1)
+                my_player = random.randint(0, 1)
                 # And sending the other player to the client
                 other_player = 0 if my_player == 1 else 1
                 c_manager.send_message(f"[PlayerChoice] {other_player}")
