@@ -282,6 +282,9 @@ class Goal(Blank):
         self.map_manager.needs_updates.append(self)
 
     def update(self):
-        if arcade.check_for_collision(self.sprite, self.map_manager.player.player):
-            self.map_manager.player.won = True
-            self.map_manager.c_manager.send_message(f"[Won] {self.map_manager.player.id}")
+        if self.map_manager.game.host:
+            if arcade.check_for_collision(self.sprite, self.map_manager.player.player) and not self.map_manager.player.won :
+                self.map_manager.player.won = True
+
+            if arcade.check_for_collision(self.sprite, self.map_manager.sec_player.player) and not self.map_manager.sec_player.won:
+                self.map_manager.sec_player.won = True
