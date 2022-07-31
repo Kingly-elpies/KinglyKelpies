@@ -80,6 +80,8 @@ class Player:
             self.player.center_x = temp_center_x
             self.player.center_y = temp_center_y
 
+            self.game.sounds.sound("Footstep")
+
             self.game.c_manager.send_message(f"[Walk] {self.player.center_x},{self.player.center_y}")
 
     def run_interact(self):
@@ -111,7 +113,8 @@ class Player:
             case (arcade.key.Q):
                 self.handle_box()
             case (arcade.key.R):
-                self.map_manager.load_map_data("test_map", self, self.map_manager.sec_player, self.map_manager.c_manager)
+                self.map_manager.load_map_data(
+                    self.map_manager.map_name, self, self.map_manager.sec_player, self.map_manager.c_manager)
 
     def swap_textures(self):
         old_textures = self.textures.copy()

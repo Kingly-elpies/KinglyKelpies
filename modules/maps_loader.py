@@ -16,8 +16,8 @@ class MapManager:
         self.textures = self.load_textures("./resources/tilesets/KelpiesTileset.png")
         self.sprites = []
 
-        self.doors  = []
-        self.boxes  = []
+        self.doors = []
+        self.boxes = []
         self.box_obj = []
         self.plates = []
 
@@ -28,7 +28,8 @@ class MapManager:
         self.needs_updates = []
         self.needs_wb_updates = []
 
-        self.list_of_lists = [self.sprites,self.doors,self.boxes,self.box_obj,self.plates,self.all_tiles,self.interactables,self.collision,self.needs_updates,self.needs_wb_updates]
+        self.list_of_lists = [self.sprites, self.doors, self.boxes, self.box_obj, self.plates,
+                              self.all_tiles, self.interactables, self.collision, self.needs_updates, self.needs_wb_updates]
 
         self.loaded = False
 
@@ -40,8 +41,9 @@ class MapManager:
                 return True
         return False
 
-    def get_door(self,x,y):
-        return [door for door in self.doors if door.x == x and door.y == y][0] #return the door with the matching coordinates
+    def get_door(self, x, y):
+        # return the door with the matching coordinates
+        return [door for door in self.doors if door.x == x and door.y == y][0]
 
     def load_textures(self, fp, tile_size=16):
         tile_map = Image.open(fp)
@@ -58,7 +60,7 @@ class MapManager:
         # convert them to textures
         return [arcade.Texture(name=n, image=img, hit_box_algorithm=None) for n, img in enumerate(tile_list)]
 
-    def assing_player(self,sprite,s_id):
+    def assing_player(self, sprite, s_id):
         if self.player.id == 0:
             if s_id == 21:
                 self.player.assing(sprite, self)
@@ -70,17 +72,18 @@ class MapManager:
             else:
                 self.sec_player.assing(sprite, self)
 
-
     def handle_assingment(self, sprite, tile, x, y):
         match tile["type"]:
-            case (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12):  # walls
+            case (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 39):  # walls
                 objects.Wall(sprite, x, y, self)
             case (13 | 14):
                 # Buttons on | off
                 objects.Button(sprite, tile, x, y, self)
-            case (15 | 16):
+            case (15):
                 # Door closed | Door open
                 objects.Door(sprite, tile, x, y, self)
+            case (16):
+                objects.Door(sprite, tile, x, y, self,inverted=True)
             case (17 | 18 | 19):
                 # Plates on| ("off" can't be default) | with box
                 objects.Plate(sprite, tile, x, y, self)
@@ -103,11 +106,15 @@ class MapManager:
         for sprite in self.sprites:
             match sprite.texture.name:
                 case (21|27):
-                    players.append(sprite)
+                    if sprite is self.player.player or sprite is self.sec_player.player:
+                        players.append(sprite)
                 case (20):
                     boxes.append(sprite)
+                case (22 | 23 | 24 | 25 | 26 | 28 | 29 | 30 | 31 | 32):
+                    pass
                 case _:
-                    other.append(sprite)
+                    if type(sprite.texture.name) is int:
+                        other.append(sprite)
 
         self.sprites.clear()
         self.sprites += other
@@ -133,11 +140,10 @@ class MapManager:
                 self.sprites.append(sprite)
 
                 self.handle_assingment(sprite, tile, x, y)
-        
+
         self.sort_sprites()
 
-
-    def load_map_data(self, map_name: str, player,sec_player, c_manager) -> None:
+    def load_map_data(self, map_name: str, player, sec_player, c_manager) -> None:
         """
         Load a tile map file from the resources/tilemaps folder
         :param str map_name: The name of the file without file extension
@@ -145,6 +151,7 @@ class MapManager:
         """
         # Loading the map
         self.map = json.load(open(f"./resources/tilemaps/{map_name}.json", "r"))["Map"]
+        self.map_name = map_name
         self.player = player
         self.sec_player = sec_player
         self.c_manager = c_manager
@@ -187,4 +194,3 @@ class MapManager:
 
             if self.player.has_box or self.player.can_pick_up:
                 self.player.interact_q.draw(pixelated=True)
-                

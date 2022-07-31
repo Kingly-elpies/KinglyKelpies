@@ -1,5 +1,5 @@
 import arcade
-from modules import start_menu, pause_menu, maps_loader, player
+from modules import start_menu, pause_menu, maps_loader, player, sounds
 import os
 
 SCREEN_WIDTH = 800
@@ -38,11 +38,9 @@ class MyGame(arcade.Window):
         self.start_menu = start_menu.StartMenu(self)
         self.pause_menu = pause_menu.PauseMenu(self)
         self.maps_loader = maps_loader.MapManager(self)
+        self.sounds = sounds.Sounds(self)
         # Calling the Select Menu to show on Startup
         self.start_menu.select_menu()
-        # Play ShitMusic
-        # self.play_sound(":resources:music/1918.mp3")
-        self.play_sound("./resources/music-tobu-infectious.mp3")
 
     def game(self, c_manager, my_player):
         """ Custom Function which gets called when joining a Game.
@@ -54,7 +52,9 @@ class MyGame(arcade.Window):
         self.player = player.Player(self, my_player)
         self.sec_player = player.RobotPlayer(self, my_player)
 
-        self.maps_loader.load_map_data("test_map", self.player, self.sec_player, c_manager)
+        self.maps_loader.load_map_data("soloBoxDuping", self.player, self.sec_player, c_manager)
+        # Play ShitMusic
+        self.play_sound("./resources/music-tobu-infectious.mp3")
 
     def on_draw(self):
         """

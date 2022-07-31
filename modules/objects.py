@@ -145,29 +145,44 @@ class Plate(Blank):
 
 class Door(Blank):
 
-    def __init__(self, sprite, kwargs, x, y, map_manager):
+    def __init__(self, sprite, kwargs, x, y, map_manager, inverted = False):
         super().__init__(sprite, x, y, map_manager)
 
-        self.map_manager.collision.append(self)
+        self.counter = int(kwargs["counter"])
+
+        self.inverted = inverted
+
+        self.open = self.inverted
+        
+        if not self.open: self.map_manager.collision.append(self);
+
         self.map_manager.doors.append(self)
 
-        self.counter = int(kwargs["counter"])
-        self.open = False
+    def check_open(self):
+        if not self.inverted:
+            return self.counter <= 0
+        else:
+            return self.counter > 0
 
     def update_counter(self, amount):
         self.counter += amount
 
-        if self.counter <= 0 and not self.open:
+        if self.check_open() and not self.open:
             # Open the door by removing collison and changing the sprite
 
             self.sprite.texture = self.map_manager.textures[16]
+
             self.map_manager.collision.remove(self)
+
             self.open = True
-        elif self.counter > 0 and self.open:
+
+        elif not self.check_open() and self.open:
             # Close the door by adding collision and chnaging the sprite
 
             self.sprite.texture = self.map_manager.textures[15]
+
             self.map_manager.collision.append(self)
+
             self.open = False
 
 
@@ -203,7 +218,7 @@ class Box(Blank):
     #                     self.map_manager.sprites.remove(self.sprite)
 
     def hide(self):
-        self.sprite.texture = self.map_manager.textures[39]
+        self.sprite.texture = self.map_manager.textures[33]
         self.map_manager.boxes.remove(self)
 
     def show(self, who):

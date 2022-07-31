@@ -1,1 +1,5 @@
-{"master_volume": 0, "sound": true, "music": false}
+{
+    "master_volume": 80,
+    "sound": true,
+    "music": false
+}

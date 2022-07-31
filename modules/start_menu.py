@@ -59,7 +59,7 @@ class StartMenu:
         if "music" in filename and self.game.music:
             sound.play(volume=self.game.volume / 100, loop=True)
         # Checking if File is a Sound file and Sound is allowed by Settings
-        elif "sound" not in filename and self.game.sound:
+        elif "sound" in filename and self.game.sound:
             sound.play(volume=self.game.volume / 100)
 
     def clear_manager(self):
@@ -130,7 +130,7 @@ class StartMenu:
         self.v_box.add(self.input_border.with_space_around(bottom=20))
 
         # Deleting the Default Text from the Client Input when its clicked
-        @self.client_input.event()
+        @ self.client_input.event()
         def on_event(event: arcade.gui.UIMousePressEvent):
             if type(event) == arcade.gui.UIMousePressEvent:
                 if self.client_input.text == self.default_client_text:
@@ -150,12 +150,12 @@ class StartMenu:
         self.v_box.add(self.buttons_ui)
 
         # Going Back to the StartMenu when Clicking the Back Button
-        @back_button.event("on_click")
+        @ back_button.event("on_click")
         def on_back_click(event):
             self.select_menu()
 
         # Event for Clicking the Continue Button
-        @continue_button.event("on_click")
+        @ continue_button.event("on_click")
         def on_continue_click(event):
             # Initializing a Loading Animation with 3 Incoming Updates
             self.loading_animation(3)
@@ -230,7 +230,7 @@ class StartMenu:
         self.v_box.add(self.input_border.with_space_around(bottom=20))
 
         # Deleting the Default Text from the Server Input when its clicked
-        @self.server_input.event()
+        @ self.server_input.event()
         def on_event(event: arcade.gui.UIMousePressEvent):
             if type(event) == arcade.gui.UIMousePressEvent:
                 if self.server_input.text == self.default_server_text:
@@ -250,12 +250,12 @@ class StartMenu:
         self.v_box.add(self.buttons_ui)
 
         # Going Back to the StartMenu when Clicking the Back Button
-        @back_button.event("on_click")
+        @ back_button.event("on_click")
         def on_back_click(event):
             self.select_menu()
 
         # Event for Clicking the Continue Button
-        @continue_button.event("on_click")
+        @ continue_button.event("on_click")
         def on_continue_click(event):
             # Initializing a Loading Animation with 3 Incoming Updates
             self.loading_animation(4)
@@ -331,7 +331,7 @@ class StartMenu:
         self.v_box.add(self.volumes_ui.with_space_around(bottom=20))
 
         # Updating the Games Volume when the Slider value changes
-        @ui_slider.event()
+        @ ui_slider.event()
         def on_change(event: arcade.gui.UIOnChangeEvent):
             self.game.volume = int(ui_slider.value)
 
@@ -345,12 +345,13 @@ class StartMenu:
         sound_button = arcade.gui.UIFlatButton(width=100, height=30, text="ON" if self.game.sound else "OFF",
                                                style=self.game.default_style)
         self.sounds_ui.add(sound_button.with_space_around(left=20))
+        self.v_box.add(self.sounds_ui.with_space_around(bottom=20))
         # Adding the SoundsUI to the main VBox
         self.musics_ui = arcade.gui.UIBoxLayout(vertical=False)
 
         # Changing the Games SoundBoolean when the Button is clicked
         # And Changing the Buttons Text
-        @sound_button.event("on_click")
+        @ sound_button.event("on_click")
         def on_sound_button_click(event):
             sound_button.text = "ON" if sound_button.text == "OFF" else "OFF"
             self.game.sound = False if sound_button.text == "OFF" else True
@@ -370,7 +371,7 @@ class StartMenu:
 
         # Changing the Games MusicBoolean when the Button is clicked
         # And Changing the Buttons Text
-        @music_button.event("on_click")
+        @ music_button.event("on_click")
         def on_sound_button_click(event):
             music_button.text = "ON" if music_button.text == "OFF" else "OFF"
             self.game.music = False if music_button.text == "OFF" else True
@@ -381,7 +382,7 @@ class StartMenu:
         self.v_box.add(back_button.with_space_around(left=20))
 
         # When Clicking the BackButton, saving the Settings to the JSON and going back to the Select Menu
-        @back_button.event("on_click")
+        @ back_button.event("on_click")
         def on_back_click(event):
             self.game.settings_json["master_volume"], self.game.settings_json["music"], self.game.settings_json[
                 "sound"] = self.game.volume, self.game.music, self.game.sound
@@ -407,15 +408,15 @@ class StartMenu:
         self.v_box.add(settings_button.with_space_around(bottom=20))
 
         # Calling matching Function if on of the Buttons is clicked
-        @client_button.event("on_click")
+        @ client_button.event("on_click")
         def on_client_click(event):
             self.client_click()
 
-        @server_button.event("on_click")
+        @ server_button.event("on_click")
         def on_server_click(event):
             self.server_click()
 
-        @settings_button.event("on_click")
+        @ settings_button.event("on_click")
         def on_settings_click(event):
             self.settings_click()
 
