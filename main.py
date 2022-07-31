@@ -52,7 +52,7 @@ class MyGame(arcade.Window):
         self.player = player.Player(self, my_player)
         self.sec_player = player.RobotPlayer(self, my_player)
 
-        self.maps_loader.load_map_data("soloBoxDuping", self.player, self.sec_player, c_manager)
+        self.maps_loader.load_map_data("test_map", self.player, self.sec_player, c_manager)
         # Play ShitMusic
         self.play_sound("./resources/music-tobu-infectious.mp3")
 

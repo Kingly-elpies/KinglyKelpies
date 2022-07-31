@@ -272,3 +272,16 @@ class Hole(Blank):
                 self.map_manager.boxes.remove(box)
                 self.map_manager.box_obj.remove(box)
                 self.map_manager.sprites.remove(box.sprite)
+
+class Goal(Blank):
+
+    def __init__(self, sprite, x, y, map_manager):
+        super().__init__(sprite, x, y, map_manager)
+
+        self.map_manager.goals.append(self)
+        self.map_manager.needs_updates.append(self)
+
+    def update(self):
+        if arcade.check_for_collision(self.sprite, self.map_manager.player.player):
+            self.map_manager.player.won = True
+            self.map_manager.c_manager.send_message(f"[Won] {self.map_manager.player.id}")

@@ -23,6 +23,8 @@ class Player:
         self.has_box = False
         self.box = None
 
+        self.won = False
+
     def get_textures(self, offset=0):
         if self.id == 0:
             textures = self.map_manager.textures[21+offset:24+offset]
@@ -189,6 +191,8 @@ class RobotPlayer:
         self.id = int(not(player_id))
 
         self.player = None
+
+        self.won = False
 
     def get_textures(self, offset=0):
         if self.id == 0:

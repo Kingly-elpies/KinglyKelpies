@@ -20,6 +20,7 @@ class MapManager:
         self.boxes = []
         self.box_obj = []
         self.plates = []
+        self.goals = []
 
         self.all_tiles = []
 
@@ -29,7 +30,7 @@ class MapManager:
         self.needs_wb_updates = []
 
         self.list_of_lists = [self.sprites, self.doors, self.boxes, self.box_obj, self.plates,
-                              self.all_tiles, self.interactables, self.collision, self.needs_updates, self.needs_wb_updates]
+                              self.all_tiles, self.interactables, self.collision, self.needs_updates, self.needs_wb_updates, self.goals]
 
         self.loaded = False
 
@@ -83,7 +84,7 @@ class MapManager:
                 # Door closed | Door open
                 objects.Door(sprite, tile, x, y, self)
             case (16):
-                objects.Door(sprite, tile, x, y, self,inverted=True)
+                objects.Door(sprite, tile, x, y, self, inverted=True)
             case (17 | 18 | 19):
                 # Plates on| ("off" can't be default) | with box
                 objects.Plate(sprite, tile, x, y, self)
@@ -97,6 +98,8 @@ class MapManager:
                 objects.Box(sprite, x, y, self)
             case (34):
                 objects.Hole(sprite, x, y, self)
+            case (36):
+                objects.Goal(sprite, x, y, self)
 
     def sort_sprites(self):
         other = []
@@ -105,7 +108,7 @@ class MapManager:
 
         for sprite in self.sprites:
             match sprite.texture.name:
-                case (21|27):
+                case (21 | 27):
                     if sprite is self.player.player or sprite is self.sec_player.player:
                         players.append(sprite)
                 case (20):
@@ -150,6 +153,9 @@ class MapManager:
         :param float scaling: Factor by which the size of the map should be increased (default: 1)
         """
         # Loading the map
+        for l in self.list_of_lists:
+            l.clear()
+
         self.map = json.load(open(f"./resources/tilemaps/{map_name}.json", "r"))["Map"]
         self.map_name = map_name
         self.player = player
@@ -170,8 +176,16 @@ class MapManager:
                 for wb_obi in self.needs_wb_updates:
                     wb_obi.wb_update(update)
 
+                if "[Won]" in update:
+                    self.sec_player.won = True
+
             for obj in self.all_tiles:
                 obj.clean()
+
+            if self.sec_player.won and self.player.won:
+                self.game.close()
+                self.game.c_manager.send_message("websocket.disconnect")
+                arcade.exit()
 
     def draw_layer(self) -> None:
         """
