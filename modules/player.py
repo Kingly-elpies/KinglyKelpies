@@ -12,6 +12,7 @@ class Player:
         self.moving_speed = 64
 
         self.player = None
+        self.game.camera = arcade.Camera(self.game._width, self.game._height)
 
         self.direction = "left"
 
@@ -24,6 +25,15 @@ class Player:
         self.box = None
 
         self.won = False
+
+        self.check_collisions = True
+
+    def center_camera_to_player(self):
+        screen_center_x = self.player.center_x - (self.game.camera.viewport_width / 2)
+        screen_center_y = self.player.center_y - (self.game.camera.viewport_height / 2)
+        player_centered = screen_center_x, screen_center_y
+
+        self.game.camera.move_to(player_centered)
 
     def get_textures(self, offset=0):
         if self.id == 0:
@@ -78,7 +88,7 @@ class Player:
         temp_center_x = self.player.center_x + m_x
         temp_center_y = self.player.center_y + m_y
 
-        if not self.map_manager.will_collide(temp_center_x, temp_center_y):
+        if not self.map_manager.will_collide(temp_center_x, temp_center_y) or not self.check_collisions:
             self.player.center_x = temp_center_x
             self.player.center_y = temp_center_y
 
@@ -117,6 +127,8 @@ class Player:
             case (arcade.key.R):
                 self.map_manager.load_map_data(
                     self.map_manager.map_name, self, self.map_manager.sec_player, self.map_manager.c_manager)
+            case (arcade.key.J):
+                self.check_collisions = not self.check_collisions
 
     def swap_textures(self):
         old_textures = self.textures.copy()
@@ -145,6 +157,8 @@ class Player:
             # self.game.c_manager.send_message(f"[Box]")
 
     def update(self):
+        self.center_camera_to_player()
+
         found = False
 
         for interactable in self.map_manager.interactables:

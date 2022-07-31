@@ -169,6 +169,7 @@ class MapManager:
     def update(self) -> None:
         """Updates the different objects"""
         if self.loaded:
+
             for obj in self.needs_updates:
                 obj.update()
 
@@ -179,10 +180,13 @@ class MapManager:
                 if "[Won]" in update:
                     self.sec_player.won = True
 
+                elif "[level]" in update:
+                    self.game.next_level(update.replace("[level] ",""),self_triggered=False)
+
             for obj in self.all_tiles:
                 obj.clean()
 
-            if self.sec_player.won and self.player.won:
+            if self.sec_player.won and self.player.won and self.game.host:
                 self.game.next_level()
 
     def draw_layer(self) -> None:

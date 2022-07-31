@@ -1,6 +1,7 @@
 import arcade
 import arcade.gui
 
+
 class PauseMenu:
 
     def __init__(self, game):
@@ -18,21 +19,37 @@ class PauseMenu:
         self.bg_v_box = arcade.gui.UIBoxLayout()
 
         # Adding a Background (Its Translucent Black to Darken the Background)
-        bg = arcade.gui.UISpace(x=-5, y=-5, width=self.game._width+10, height=self.game._height+10, color=(0,0,0, 170))
+        bg = arcade.gui.UISpace(x=-5, y=-5, width=self.game._width+10,
+                                height=self.game._height+10, color=(0, 0, 0, 170))
         self.escape_ui.add(bg)
         # Adding the Games Title and a "Pause Menu" Text
-        self.title = arcade.gui.UILabel(text="Your Ad Here", font_name=("calibri", "arial"), font_size=20, text_color=arcade.color.AMARANTH_PINK, bold=True, dpi=200, align="center")
-        self.pause_title = arcade.gui.UILabel(text="Pause Menu", font_name=("calibri", "arial"), font_size=10, text_color=arcade.color.AMARANTH_PINK, bold=True, dpi=200, align="center")
+        self.title = arcade.gui.UILabel(text="for level_id in range(16)", font_name=(
+            "calibri", "arial"), font_size=20, text_color=arcade.color.AMARANTH_PINK, bold=True, dpi=200, align="center")
+        self.pause_title = arcade.gui.UILabel(text="Pause Menu", font_name=(
+            "calibri", "arial"), font_size=10, text_color=arcade.color.AMARANTH_PINK, bold=True, dpi=200, align="center")
         self.escape_v_box.add(self.title.with_space_around(bottom=20))
         self.escape_v_box.add(self.pause_title.with_space_around(bottom=100))
         # Creating a Continue Button
-        continue_button = arcade.gui.UIFlatButton(x=self.game._width//2, y=self.game._height//2+200, width=150, height=50, text="Continue", style=self.game.default_style)
+        continue_button = arcade.gui.UIFlatButton(
+            x=self.game._width//2, y=self.game._height//2+200, width=150, height=50, text="Continue", style=self.game.default_style)
         self.escape_v_box.add(continue_button.with_space_around(bottom=20))
+        # Creating a LevelMenu Button
+        if self.game.host:
+            level_button = arcade.gui.UIFlatButton(x=self.game._width//2, y=self.game._height
+                                                   // 2+200, width=150, height=50, text="Level Menu", style=self.game.default_style)
+            self.escape_v_box.add(level_button.with_space_around(bottom=20))
+
+            # Going to LevelMenu when clicking the LevelButton
+            @level_button.event("on_click")
+            def on_level_click(event):
+                self.game.level_menu.level()
         # Creating a Restart Button
-        restart_button = arcade.gui.UIFlatButton(x=self.game._width//2, y=self.game._height//2-200, width=150, height=50, text="Restart Game", style=self.game.default_style)
+        restart_button = arcade.gui.UIFlatButton(
+            x=self.game._width//2, y=self.game._height//2-200, width=150, height=50, text="Restart Game", style=self.game.default_style)
         self.escape_v_box.add(restart_button.with_space_around(bottom=20))
         # Creating a Quit Button
-        quit_button = arcade.gui.UIFlatButton(x=self.game._width//2, y=self.game._height//2-200, width=150, height=50, text="Quit Game", style=self.game.default_style)
+        quit_button = arcade.gui.UIFlatButton(x=self.game._width//2, y=self.game._height
+                                              // 2-200, width=150, height=50, text="Quit Game", style=self.game.default_style)
         self.escape_v_box.add(quit_button.with_space_around(bottom=20))
 
         # Unpausing Game when clicking the ContinueButton
@@ -56,8 +73,8 @@ class PauseMenu:
 
         # Adding the BackgroundUI and the EscapeVBox to the EscapeUI
         self.escape_ui.add(arcade.gui.UIAnchorWidget(anchor_x="center_x", anchor_y="center_y", child=self.bg_v_box))
-        self.escape_ui.add(arcade.gui.UIAnchorWidget(anchor_x="center_x", anchor_y="center_y", child=self.escape_v_box))
-
+        self.escape_ui.add(arcade.gui.UIAnchorWidget(anchor_x="center_x",
+                           anchor_y="center_y", child=self.escape_v_box))
 
     def unpause(self):
         """ Unpauses the game by Disabling the EscapeUI. """

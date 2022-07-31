@@ -70,7 +70,7 @@ class StartMenu:
         # Creating new fresh UIBoxLayout (VBox)
         self.v_box = arcade.gui.UIBoxLayout()
         # Always add/stay on top
-        self.title = arcade.gui.UILabel(text="Your Ad Here", font_name=("calibri", "arial"), font_size=20,
+        self.title = arcade.gui.UILabel(text="for list in list(range(int('16'))", font_name=("calibri", "arial"), font_size=14,
                                         text_color=self.game.default_style["font_color"], bold=True, dpi=200, align="center")
         # Adding Title to the VBox and the VBox to the UIManager
         self.v_box.add(self.title.with_space_around(bottom=100))
@@ -211,6 +211,8 @@ class StartMenu:
                 self.update_loading_status(f"Loading Game...")
                 # Pausing the Game for 1 Second for a better visual experience
                 arcade.pause(1)
+                # Setting self.game.host to False
+                self.game.host = False
                 # Calling the main.py game() Function
                 self.game.game(c_manager, my_player)
 
@@ -311,6 +313,8 @@ class StartMenu:
                 self.update_loading_status(f"Loading Game...")
                 # Pausing the Game for 1 Second for a better visual experience
                 arcade.pause(1)
+                # Setting self.game.host to True (Who could have guessed?!?!?!)
+                self.game.host = True
                 # Calling the main.py game() Function
                 self.game.game(c_manager, my_player)
 
@@ -406,6 +410,10 @@ class StartMenu:
         settings_button = arcade.gui.UIFlatButton(x=self.game._width // 2, y=self.game._height // 2 - 200, width=150,
                                                   height=50, text="Settings", style=self.game.default_style)
         self.v_box.add(settings_button.with_space_around(bottom=20))
+        # Adding the Quit Button to the VBox
+        quit_button = arcade.gui.UIFlatButton(x=self.game._width // 2, y=self.game._height // 2 - 200, width=150,
+                                              height=50, text="Quit", style=self.game.default_style)
+        self.v_box.add(quit_button.with_space_around(bottom=20))
 
         # Calling matching Function if on of the Buttons is clicked
         @ client_button.event("on_click")
@@ -419,6 +427,13 @@ class StartMenu:
         @ settings_button.event("on_click")
         def on_settings_click(event):
             self.settings_click()
+
+        # Quiting the Game when clicking the QuitButton
+        # This doesnt quit the Interpreter
+        @quit_button.event("on_click")
+        def on_quit_click(event):
+            self.game.close()
+            arcade.exit()
 
     def draw_start_menu(self):
         """ Draws the UIManager and the additional Sprites to the screen. """

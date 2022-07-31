@@ -1,10 +1,10 @@
 import arcade
-from modules import start_menu, pause_menu, maps_loader, player, sounds
+from modules import start_menu, pause_menu, maps_loader, player, sounds, level_menu
 import os
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-SCREEN_TITLE = "Starting Template"
+SCREEN_TITLE = "for list in list(range(int('16'))"
 
 
 class MyGame(arcade.Window):
@@ -19,11 +19,15 @@ class MyGame(arcade.Window):
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
 
-        self.background_menue = (61, 169, 143)
+        self.background_menu = (61, 169, 143)
         self.background = None
+
+        self.camera = None
         self.default_args = dict(vars(self))
+        self.host = False
         # If you have sprite lists, you should create them here,
         # and set them to None
+        self.level = 0
 
     def setup(self):
         """ Set up the game variables. Call to re-start the game. """
@@ -32,15 +36,17 @@ class MyGame(arcade.Window):
             if item not in self.default_args:
                 del item
 
-        self.background = self.background_menue
+        self.background = self.background_menu
 
         # Initializing Modules
         self.start_menu = start_menu.StartMenu(self)
         self.pause_menu = pause_menu.PauseMenu(self)
+        self.level_menu = level_menu.LevelMenu(self)
         self.maps_loader = maps_loader.MapManager(self)
         self.sounds = sounds.Sounds(self)
         # Calling the Select Menu to show on Startup
         self.start_menu.select_menu()
+        self.level = 0
 
     def game(self, c_manager, my_player):
         """ Custom Function which gets called when joining a Game.
@@ -52,20 +58,28 @@ class MyGame(arcade.Window):
         self.player = player.Player(self, my_player)
         self.sec_player = player.RobotPlayer(self, my_player)
 
-        self.maps_loader.load_map_data("tutorial1", self.player, self.sec_player, c_manager)
+        self.maps_loader.load_map_data("0", self.player, self.sec_player, c_manager)
         # Play ShitMusic
         self.play_sound("./resources/music-tobu-infectious.mp3")
 
         self.my_player = my_player
 
-    def next_level(self):
+    def next_level(self, level=None, self_triggered=True):
         if self._setup == False:
+            if level is None:
+                self.level += 1
+            else:
+                self.level = level
+
             self.maps_loader = maps_loader.MapManager(self)
 
             self.player = player.Player(self, self.my_player)
             self.sec_player = player.RobotPlayer(self, self.my_player)
 
-            self.maps_loader.load_map_data("test_map", self.player, self.sec_player, self.c_manager)
+            self.maps_loader.load_map_data(str(self.level), self.player, self.sec_player, self.c_manager)
+
+            if self_triggered:
+                self.c_manager.send_message(f"[level] {self.level}")
 
     def on_draw(self):
         """
@@ -75,6 +89,9 @@ class MyGame(arcade.Window):
         # This command should happen before we start drawing. It will clear
         # the screen to the background color, and erase what we drew last frame.
         self.clear()
+
+        if self.camera:
+            self.camera.use()
 
         # Draw the background texture
         arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background) if type(
@@ -86,6 +103,7 @@ class MyGame(arcade.Window):
 
         # Always draw on Top
         self.pause_menu.draw_pause_menu()
+        self.level_menu.draw_level_menu()
 
     def on_update(self, delta_time):
         """
@@ -112,8 +130,9 @@ class MyGame(arcade.Window):
         if not self._setup:
             self.player.player_key_press(key, key_modifiers)
 
-        if key == arcade.key.N:
-            self.next_level()
+        match key:
+            case (arcade.key.N):
+                self.next_level()
 
     def on_key_release(self, key, key_modifiers):
         """
