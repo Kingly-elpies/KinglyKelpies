@@ -124,7 +124,7 @@ class Player:
             self.swap_textures()
             self.facing(self.direction)
 
-            self.game.c_manager.send_message(f"[Box]")
+            # self.game.c_manager.send_message(f"[Box]")
 
     def put_down(self):
         if self.has_box:
@@ -136,7 +136,7 @@ class Player:
             self.has_box = False
             self.box = None
 
-            self.game.c_manager.send_message(f"[Box]")
+            # self.game.c_manager.send_message(f"[Box]")
 
     def update(self):
         found = False

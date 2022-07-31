@@ -135,10 +135,12 @@ class Box:
 
         self.map_manager = map_manager
 
-        self.x = x
+        self.x = x # not actual position used as identifier
         self.y = y
 
         self.map_manager.boxes.append(self)
+        self.map_manager.box_obj.append(self)
+
         self.map_manager.needs_wb_updates.append(self)
 
         self.picked_up = False
@@ -148,6 +150,7 @@ class Box:
             who.pick_up(self)
             self.picked_up = True
             self.hide()
+            self.map_manager.c_manager.send_message(f"[Box] {self.x},{self.y},1")
 
     def hide(self):
         self.sprite.texture = self.map_manager.textures[39]
@@ -162,6 +165,7 @@ class Box:
         if self.picked_up:
             self.picked_up = False
             self.show(who)
+            self.map_manager.c_manager.send_message(f"[Box] {self.x},{self.y},0")
 
     def getSpriteCollison(self):
         collides = False
@@ -174,12 +178,16 @@ class Box:
         else:
             self.sprite.texture = self.map_manager.textures[20]
 
-    def wb_update(self, update):
+    def wb_update(self, update:str):
         if "[Box]" in update:
-            if arcade.check_for_collision(self.sprite, self.map_manager.sec_player.player) or self.picked_up:
-                self.show(self.map_manager.sec_player) if self.picked_up else self.hide()
-                self.map_manager.sec_player.sprite_update_box()
-                self.picked_up = not self.picked_up
+            x,y,state = update.replace("[Box] ", "").split(",")
+            if (int(x),int(y)) == (self.x,self.y):
+                if state == "1":
+                    self.hide()
+                    self.map_manager.sec_player.sprite_update_box()
+                else:
+                    self.show(self.map_manager.sec_player)
+                    self.map_manager.sec_player.sprite_update_box()
 
 class Hole:
 
@@ -199,4 +207,5 @@ class Hole:
                 self.map_manager.collision.remove(self)
                 self.map_manager.needs_wb_updates.remove(box)
                 self.map_manager.boxes.remove(box)
+                self.map_manager.box_obj.remove(box)
                 self.map_manager.sprites.remove(box.sprite)

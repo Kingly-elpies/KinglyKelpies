@@ -17,6 +17,7 @@ class MapManager:
 
         self.doors  = []
         self.boxes  = []
+        self.box_obj = []
         self.plates = []
 
         self.interactables = []
