@@ -18,7 +18,12 @@ class Button:
         self.sprite = sprite
 
         self.state = kwargs["state"]
-        self.link_x, self.link_y = kwargs["link"]["x"], kwargs["link"]["y"]
+        if type(kwargs["link"]) is list:
+            self.link_list = True
+        else:
+            self.link_list = False
+
+        self.link = kwargs["link"]
 
         self.x = x
         self.y = y
@@ -35,7 +40,17 @@ class Button:
             amount = 1
 
         self.sprite.texture = texture  # update texture
-        self.map_manager.get_door(self.link_x, self.link_y).update_counter(amount)  # update linked door
+        self.run_door(amount)
+
+    def run_door(self,amount):
+        if self.link_list:
+            for link in self.link:
+                x,y = link["x"],link["y"]
+                self.map_manager.get_door(x, y).update_counter(amount)
+        else:
+            x,y = self.link["x"],self.link["y"]
+            self.map_manager.get_door(x, y).update_counter(amount)
+
 
     def interact(self, who):
         self.state = (self.state + 1) % 2
@@ -61,7 +76,12 @@ class Plate:
         self.y = y
 
         self.state = kwargs["state"]
-        self.link_x, self.link_y = kwargs["link"]["x"], kwargs["link"]["y"]
+        if type(kwargs["link"]) is list:
+            self.link_list = True
+        else:
+            self.link_list = False
+
+        self.link = kwargs["link"]
 
         self.down = False
         self.forced = False
@@ -69,9 +89,19 @@ class Plate:
         self.map_manager.needs_updates.append(self)
         self.map_manager.plates.append(self)
 
+    def run_door(self,amount):
+        if self.link_list:
+            for link in self.link:
+                x,y = link["x"],link["y"]
+                self.map_manager.get_door(x, y).update_counter(amount)
+        else:
+            x,y = self.link["x"],self.link["y"]
+            self.map_manager.get_door(x, y).update_counter(amount)
+
+
     def change_state(self, texture_id, amount, down, state):
         self.sprite.texture = self.map_manager.textures[texture_id]  # update own texture
-        self.map_manager.get_door(self.link_x, self.link_y).update_counter(amount)  # update linked door
+        self.run_door(amount)  # update linked door
 
         self.down = down
         self.state = state
