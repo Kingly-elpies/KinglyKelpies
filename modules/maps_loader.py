@@ -2,6 +2,7 @@ import arcade
 import json
 from PIL import Image
 from modules import objects
+from modules import player
 
 
 class MapManager:
@@ -90,6 +91,25 @@ class MapManager:
             case (34):
                 objects.Hole(sprite, x, y, self)
 
+    def sort_sprites(self):
+        other = []
+        players = []
+        boxes = []
+
+        for sprite in self.sprites:
+            match sprite.texture.name:
+                case (21|27):
+                    players.append(sprite)
+                case (20):
+                    boxes.append(sprite)
+                case _:
+                    other.append(sprite)
+
+        self.sprites.clear()
+        self.sprites += other
+        self.sprites += boxes
+        self.sprites += players
+
     def generate_sprites(self):
         for y, row in enumerate(self.map):
             for x, tile in enumerate(row):
@@ -109,6 +129,9 @@ class MapManager:
                 self.sprites.append(sprite)
 
                 self.handle_assingment(sprite, tile, x, y)
+        
+        self.sort_sprites()
+
 
     def load_map_data(self, map_name: str, player,sec_player, c_manager) -> None:
         """
