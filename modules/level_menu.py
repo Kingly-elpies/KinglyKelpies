@@ -25,7 +25,7 @@ class LevelMenu:
 
         # Create input line
         inp_width = 300
-        self.default_client_text = "Enter level in range(15)"
+        self.default_client_text = "Enter level in range(14)"
         self.level_input = arcade.gui.UIInputText( x=self.game._width//2-inp_width//2,y =self.game._height//2,width=inp_width, height=20, text=self.default_client_text,
                                                    font_name=('Arial',), font_size=12,
                                                    text_color=self.game.default_style["font_color"], multiline=False,

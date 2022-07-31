@@ -4,7 +4,7 @@ import os
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-SCREEN_TITLE = "for list in list(range(int('16'))"
+SCREEN_TITLE = "for list in list(range(int('14'))"
 
 
 class MyGame(arcade.Window):
@@ -21,6 +21,8 @@ class MyGame(arcade.Window):
         # If you have sprite lists, you should create them here,
         # and set them to None
         self.level = 0
+
+        self.counter = 20
 
     def setup(self):
         """ Set up the game variables. Call to re-start the game. """
@@ -43,7 +45,7 @@ class MyGame(arcade.Window):
 
     def game(self, c_manager, my_player):
         """ Custom Function which gets called when joining a Game.
-        C_Manager is the CommunicationManager, My_Player is the random Player you are playing as. """
+        C_Manager is the CommunicationManager, My_Player is the random Player you are playing as. (int)"""
         # Gets Called when the Game Begins
         self._setup = False
 
@@ -58,7 +60,9 @@ class MyGame(arcade.Window):
         self.my_player = my_player
 
     def next_level(self, level=None, self_triggered=True):
-        if self._setup == False:
+        """ Runs the next level or the passed level"""
+
+        if self._setup == False: # only works in game
             if level is None:
                 self.level += 1
             else:
@@ -71,7 +75,7 @@ class MyGame(arcade.Window):
 
             self.maps_loader.load_map_data(str(self.level), self.player, self.sec_player, self.c_manager)
 
-            if self_triggered:
+            if self_triggered: # send the info of which level to the other client
                 self.c_manager.send_message(f"[level] {self.level}")
 
     def on_draw(self):
@@ -90,7 +94,7 @@ class MyGame(arcade.Window):
         arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background) if type(
             self.background) != tuple else arcade.set_background_color(self.background)
 
-        # Call draw() on all your sprite lists below
+        # Draw the game or the menue the functions check if they siuld be drawn
         self.start_menu.draw_start_menu()
         self.maps_loader.draw_layer()
 
@@ -103,6 +107,12 @@ class MyGame(arcade.Window):
         This function is called about 20 times per secound to update the level if needed.
         """
         self.maps_loader.update()
+        
+        # Keeps the connection alive
+        if self.host and self.counter == 10:
+            self.c_manager.send_message("[PING]")
+
+        self.counter = (self.counter - 1)%21
 
     def on_key_press(self, key, key_modifiers):
         """
@@ -117,7 +127,8 @@ class MyGame(arcade.Window):
             self._escape = not self._escape
             # Pausing the Game if the Escape Bool is now true else unpause the game
             self.pause_menu.pause() if self._escape else self.pause_menu.unpause()
-        #
+
+        # Fi in game the keys get passed along to the player
         if not self._setup:
             self.player.player_key_press(key, key_modifiers)
 

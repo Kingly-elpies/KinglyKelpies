@@ -153,8 +153,8 @@ class MapManager:
         :param float scaling: Factor by which the size of the map should be increased (default: 1)
         """
         # Loading the map
-        for l in self.list_of_lists:
-            l.clear()
+        # for l in self.list_of_lists:
+        #     l.clear()
 
         self.map = json.load(open(f"./resources/tilemaps/{map_name}.json", "r"))["Map"]
         self.map_name = map_name
