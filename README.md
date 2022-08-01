@@ -73,7 +73,7 @@ But some say that a few bugs snuck in...
   ```  
   - you will be greeted by our main menu
   
-# How To join a game:
+# How to join a game:
 From the Main menu
 <p align= "center">
     <img src="https://user-images.githubusercontent.com/62175543/182196702-51a61a48-89b7-48a3-a36f-a566749bae11.png">
@@ -82,7 +82,11 @@ From the Main menu
 - press on `Host`, if you want to host a game. After that enter the port you want to host the game on.
 - press on `Client`, if you want to join a game. After that enter the ip of the host and the port to connect to `ip:host`.
 
-To confirm press the arrow to the right.
+To confirm press the arrow to the right. 
+
+### Notes:
+   - As a host you have to make sure that a client can connect to your port, this may include port forwarding.
+   - If you want to connect to localhost don't use the ip `127.0.0.1` use `localhost` instead.
 
 # How to play:
 ### Controlls
