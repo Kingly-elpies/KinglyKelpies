@@ -5,9 +5,9 @@ in which you aim is to reach the goal by pressing buttons, standing on plates an
 Together with a friend!
 
 # Table of contents
-1. [Installation](https://github.com/Kingly-elpies/KinglyKelpies/edit/read-me-update/README.md#installation)
-2. [How to Run](https://github.com/Kingly-elpies/KinglyKelpies/edit/read-me-update/README.md#how-to-run)
-3. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/edit/read-me-update/README.md#how-to-play)
+1. [Installation](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#installation)
+2. [How to Run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
+3. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
 
 
 # Installation
