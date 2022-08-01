@@ -18,6 +18,7 @@ But some say that a few bugs snuck in...
 
 
 # Installation
+
 ### 0. Requirements:
    - access *python 3.10* on you system
 
