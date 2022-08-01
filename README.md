@@ -14,11 +14,29 @@ Together with a friend!
 But some say that a few bugs snuck in...
 
 # Table of contents
-1. [Installation](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#installation)
-2. [How to run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
-3. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-join-a-game)
-4. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
+1. [Quick instructions](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#quick-instructions)
+2. [Installation](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#installation)
+3. [How to run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
+4. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-join-a-game)
+5. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
 
+# Quick instructions
+1. Get a friend!
+2. Have python 3.10 installed.
+3. You both install the game by running:
+    ```shell
+    $ git clone https://github.com/Kingly-elpies/KinglyKelpies
+    $ cd KinglyKelpies/
+    $ pip install -r dev-requirements.txt
+    ```
+4. Run the game:
+    ```shell
+    $ python main.py
+    ```
+5. One player Hosts on a port, the other joins as client on ip:port
+6. use w,a,s,d to move 
+7. reach the blue arrorow to win!
+    
 
 # Installation
 
