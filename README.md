@@ -4,7 +4,7 @@ A simple multiplayer puzzle game,
 in which you aim is to reach the goal by pressing buttons, standing on plates, moving boxes.
 Together with a friend!
 
-But some say that a few bugs snuck in the game...
+But some say that a few bugs snuck in...
 
 # Table of contents
 1. [Installation](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#installation)
