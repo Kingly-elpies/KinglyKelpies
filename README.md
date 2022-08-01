@@ -9,8 +9,7 @@ Together with a friend!
 2. [How to Run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
 3. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-join-a-game)
 4. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
-   - [Movement](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#1-movement)
-   - [Interaction](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#2-interaction)
+   - [Basics](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#basics)
 
 
 # Installation
@@ -75,7 +74,7 @@ From the Main menu
 - press on `Client`, if you want to join a game. After that enter the ip of the host and the port to connect to `ip:host`.
 
 # How to play:
-## Basics
+   ## Basics
    - `w` for up   
    - `a` for left
    - `s` for down  
