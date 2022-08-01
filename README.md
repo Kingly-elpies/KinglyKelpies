@@ -108,4 +108,21 @@ From the Main menu
     <t> A Door can be opend by plates and buttons. Sometimes more then one of each!</t>
 </p>
 
+<!-- Hole-->
+<p align="left">
+    <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182194195-fe95896c-a610-4a24-b806-030beb6a6e52.gif">
+    <t> A Hole can't be walked over unless you can fill it with a box. Be carefull you are not getting the box out of there!</t>
+</p>
+
+<!-- Box-->
+<p align="left">
+    <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182194668-cf9ec242-c51b-4512-a1bf-88e4d80ec139.png">
+    <t> A box can be picked up and be placed on plates to keep them active, put them next to a hole and they fall in</t>
+</p>
+
+<!-- Goal-->
+<p align="left">
+    <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182195574-53a3c7ea-7551-457a-81cf-539b1fbcec96.png">
+    <t> If both players have walked over a goal the next level will start! </t>
+</p>
 
