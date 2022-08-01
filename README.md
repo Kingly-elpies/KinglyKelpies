@@ -1,5 +1,9 @@
 **Python Discord Summer Code Jam 2022** submission from the team **KinglyKelpies**
 # *for level_id in range(14)*
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/62175543/182180722-6496cbdc-d033-41fd-ae5c-936ad99b635b.gif">
+</p
+
 A simple multiplayer puzzle game, 
 in which you aim is to reach the goal by pressing buttons, standing on plates, moving boxes.
 Together with a friend!
