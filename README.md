@@ -34,7 +34,7 @@ But some say that a few bugs snuck in...
     $ python main.py
     ```
 5. One player hosts on a port, the other joins as client on ip:port
-6. use w,a,s,d to move 
+6. use `w`,`a`,`s`,`d` to move 
 7. reach the blue arrorow to win!
     
 
