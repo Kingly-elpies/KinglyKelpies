@@ -79,6 +79,7 @@ From the Main menu
 - press on `Client`, if you want to join a game. After that enter the ip of the host and the port to connect to `ip:host`.
 
 # How to play:
+### Controlls
    - `w` for up   
    - `a` for left
    - `s` for down  
@@ -88,3 +89,23 @@ From the Main menu
    - `esc` to open the pause menu
       - the host can acces the level menue from here
       - by hitting reload you can r̵͎̀e̷̪̤̟̠͓̥͑͋̓́͊̀̚ḻ̸̰̯̏̑͛̂̎̄̽͘ơ̶̮̼̯͋̅͛å̴͇͍̩̲̍̈́͘d̶͇̰͐̓͑͒̕ the game
+### Objects
+<!-- Button-->
+<p align="left">
+    <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182188591-da67cfd8-0e70-4a2c-824e-f682fe93278f.gif">
+    <t> A button can be toggled beween on or off, used to open and close doors</t>
+</p>
+
+<!-- Plate-->
+<p align="left">
+    <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182190339-8801967b-7d60-4260-92c6-eddc30f956b4.gif">
+    <t> A Plate is toggled on or off if a player walks or a box is placed on it, used to open and close doors</t>
+</p>
+
+<!-- Door-->
+<p align="left">
+    <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182191249-53668d2d-0eb8-493f-aa8f-8e5399d44468.gif">
+    <t> A Door can be opend by plates and buttons. Sometimes more then one of each!</t>
+</p>
+
+
