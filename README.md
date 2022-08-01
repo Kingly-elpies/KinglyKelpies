@@ -20,44 +20,15 @@ But some say that a few bugs snuck in...
 # Installation
 
 ### 0. Requirements:
-   - access *python 3.10* on you system
+   -  python 3.10
 
 ### 1. Download:
    Run this command in the directory you want to download it to.
    ```shell
    $ git clone https://github.com/Kingly-elpies/KinglyKelpies
    ```
- 
-### 2. Create a venv
-  with python as python as python 3.10 create a virtual environment in the folder `.venv`.
-  ```shell
-  $ python -m venv .venv
-  ```
-
-  #### Enter the environment
-  It will change based on your operating system and shell.
-  ```shell
-  # Linux, Bash
-  $ source .venv/bin/activate
-  # Linux, Fish
-  $ source .venv/bin/activate.fish
-  # Linux, Csh
-  $ source .venv/bin/activate.csh
-  # Linux, PowerShell Core
-  $ .venv/bin/Activate.ps1
-  # Windows, cmd.exe
-  > .venv\Scripts\activate.bat
-  # Windows, PowerShell
-  > .venv\Scripts\Activate.ps1
-  ```
-
-  #### Exiting the environment 
-  Run this after you played our game.
-  ```shell
-  $ deactivate
-  ```
-
-### 3. Install the dependencies
+    
+### 2. nstall the dependencies:
   In the `/KinglyKelpies` directory run:
   ```shell
   $ pip insall -r dev-requirements.txt
@@ -68,7 +39,7 @@ But some say that a few bugs snuck in...
   
 # How to run
   - First follow or instructions for [Installation](https://github.com/Kingly-elpies/KinglyKelpies/edit/read-me-update/README.md#installation)
-  - Then run in the venv:
+  - Then run in `/KinglyKelpies` (with the python version 3.10)
   ```shell
   $ python main.py
   ```  
@@ -96,7 +67,7 @@ To confirm press the arrow to the right.
    - `s` for down  
    - `d` for right
    - `e` to press buttons
-   - `q` to pick up boxes and put them down
+   - `q` to pick up and drop boxes
    - `esc` to open the pause menu
       - the host can acces the level menue from here
       - by hitting reload you can r̵͎̀e̷̪̤̟̠͓̥͑͋̓́͊̀̚ḻ̸̰̯̏̑͛̂̎̄̽͘ơ̶̮̼̯͋̅͛å̴͇͍̩̲̍̈́͘d̶͇̰͐̓͑͒̕ the game
