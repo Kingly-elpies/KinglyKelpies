@@ -139,8 +139,10 @@ This project was created by
   
 ### Outside Sources
 Music:
-    - Tobu - Infectious http://youtube.com/tobuofficial: Provided by http://spoti.fi/NCS
+
+> Tobu - Infectious http://youtube.com/tobuofficial: Provided by http://spoti.fi/NCS
     
 Key Sprite:
-    - https://dreammix.itch.io/keyboard-keys-for-ui
+
+> Dream Mix - Pixel Keyboard Keys - for UI: https://dreammix.itch.io/keyboard-keys-for-ui
 
