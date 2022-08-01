@@ -4,12 +4,13 @@ A simple multiplayer puzzle game,
 in which you aim is to reach the goal by pressing buttons, standing on plates, moving boxes.
 Together with a friend!
 
+But some say that a few bugs snuck in the game...
+
 # Table of contents
 1. [Installation](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#installation)
 2. [How to Run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
 3. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-join-a-game)
 4. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
-   - [Basics](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#basics)
 
 
 # Installation
@@ -74,10 +75,12 @@ From the Main menu
 - press on `Client`, if you want to join a game. After that enter the ip of the host and the port to connect to `ip:host`.
 
 # How to play:
-   ### Basics
    - `w` for up   
    - `a` for left
    - `s` for down  
    - `d` for right
    - `e` to press buttons
    - `q` to pick up boxes and put them down
+   - `esc` to open the pause menu
+      - the host can acces the level menue from here
+      - by hitting reload you can r̵͎̀e̷̪̤̟̠͓̥͑͋̓́͊̀̚ḻ̸̰̯̏̑͛̂̎̄̽͘ơ̶̮̼̯͋̅͛å̴͇͍̩̲̍̈́͘d̶͇̰͐̓͑͒̕ the game
