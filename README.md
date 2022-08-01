@@ -11,7 +11,7 @@ in which you aim is to reach the goal by pressing buttons, standing on plates, m
     
 Together with a friend!
 
-But some say that a few bugs snuck in...
+*But some say that a few bugs snuck in...*
 
 # Table of contents
 1. [Quick instructions](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#quick-instructions)
