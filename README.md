@@ -28,7 +28,7 @@ But some say that a few bugs snuck in...
    $ git clone https://github.com/Kingly-elpies/KinglyKelpies
    ```
     
-### 2. nstall the dependencies:
+### 2. install the dependencies:
   In the `/KinglyKelpies` directory run:
   ```shell
   $ pip insall -r dev-requirements.txt
