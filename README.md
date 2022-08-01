@@ -35,7 +35,8 @@ But some say that a few bugs snuck in...
     ```
 5. One player hosts on a port, the other joins as client on ip:port
 6. use `w`,`a`,`s`,`d` to move 
-7. reach the blue arrow to win!
+8. reach the blue arrow to win!
+<img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182195574-53a3c7ea-7551-457a-81cf-539b1fbcec96.png"></img>
     
 
 # Installation
