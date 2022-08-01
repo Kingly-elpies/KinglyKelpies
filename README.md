@@ -19,6 +19,7 @@ Together with a friend!
 3. [How to run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
 4. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-join-a-game)
 5. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
+6. [Credits](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#credits)
 
 # Quick instructions
 1. Get a friend!
@@ -129,4 +130,17 @@ To confirm press the arrow to the right.
     <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182195574-53a3c7ea-7551-457a-81cf-539b1fbcec96.png">
     <t> If both players have walked over a goal the next level will start! </t>
 </p>
+
+# Credits
+This project was created by 
+  | [Falkan#4044](https://github.com/falkanson) | [Vinyzu#1470](https://github.com/Vinyzu) | [Redriel#3335](https://github.com/Redriel57) | 
+  |---------------------------------------------|------------------------------------------|----------------------------------------------|
+  |  Art, Game and websocket communication      | Menus, sound and game                    | Level design                                 |
+  
+### Outside Sources
+Music:
+    - Tobu - Infectious http://youtube.com/tobuofficial: Provided by http://spoti.fi/NCS
+    
+Key Sprite:
+    - https://dreammix.itch.io/keyboard-keys-for-ui
 
