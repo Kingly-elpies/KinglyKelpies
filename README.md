@@ -74,7 +74,7 @@ From the Main menu
 - press on `Client`, if you want to join a game. After that enter the ip of the host and the port to connect to `ip:host`.
 
 # How to play:
-   ## Basics
+   ### Basics
    - `w` for up   
    - `a` for left
    - `s` for down  
