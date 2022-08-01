@@ -132,7 +132,7 @@ To confirm press the arrow to the right.
 </p>
 
 # Credits
-This project was created by 
+This project was created by: 
   | [Falkan#4044](https://github.com/falkanson) | [Vinyzu#1470](https://github.com/Vinyzu) | [Redriel#3335](https://github.com/Redriel57) | 
   |---------------------------------------------|------------------------------------------|----------------------------------------------|
   |  Art, game and websocket communication      | Menus, sound and game                    | Level design                                 |
