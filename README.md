@@ -12,7 +12,7 @@ But some say that a few bugs snuck in...
 
 # Table of contents
 1. [Installation](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#installation)
-2. [How to Run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
+2. [How to run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
 3. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-join-a-game)
 4. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
 
@@ -65,7 +65,7 @@ But some say that a few bugs snuck in...
 
 #### Now you are setup to run the game!
   
-# How to Run
+# How to run
   - First follow or instructions for [Installation](https://github.com/Kingly-elpies/KinglyKelpies/edit/read-me-update/README.md#installation)
   - Then run in the venv:
   ```shell
