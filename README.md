@@ -75,12 +75,10 @@ From the Main menu
 - press on `Client`, if you want to join a game. After that enter the ip of the host and the port to connect to `ip:host`.
 
 # How to play:
-## - Basics
-### 1. Movement
+## Basics
    - `w` for up   
    - `a` for left
    - `s` for down  
    - `d` for right
-### 2. Interaction
    - `e` to press buttons
    - `q` to pick up boxes and put them down
