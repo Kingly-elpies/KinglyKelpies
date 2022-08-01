@@ -7,7 +7,7 @@
 ## What is this?
     
 A simple multiplayer puzzle game, 
-in which you aim is to reach the goal by pressing buttons, standing on plates, moving boxes.
+in which your aim is to reach the goal by pressing buttons, standing on plates and moving boxes.
     
 Together with a friend!
 
@@ -23,7 +23,7 @@ Together with a friend!
 
 # Quick instructions
 1. Get a friend!
-2. Have python 3.10 installed.
+2. Have [python 3.10](https://www.python.org/downloads/release/python-3100/) installed.
 3. You both install the game by running:
     ```shell
     $ git clone https://github.com/Kingly-elpies/KinglyKelpies
@@ -43,7 +43,7 @@ Together with a friend!
 # Installation
 
 ### 0. Requirements:
-   -  python 3.10
+   - [python 3.10](https://www.python.org/downloads/release/python-3100/)
 
 ### 1. Download:
    Run this command in the directory you want to download it to.
@@ -84,7 +84,7 @@ To confirm press the arrow to the right.
    - If you want to connect to localhost don't use the ip `127.0.0.1` use `localhost` instead.
 
 # How to play:
-### Controlls
+### Controls
    - `w` for up   
    - `a` for left
    - `s` for down  
@@ -92,43 +92,43 @@ To confirm press the arrow to the right.
    - `e` to press buttons
    - `q` to pick up and drop boxes
    - `esc` to open the pause menu
-      - the host can acces the level menue from here
+      - the host can acces the level menu from here
       - by hitting reload you can r̵͎̀e̷̪̤̟̠͓̥͑͋̓́͊̀̚ḻ̸̰̯̏̑͛̂̎̄̽͘ơ̶̮̼̯͋̅͛å̴͇͍̩̲̍̈́͘d̶͇̰͐̓͑͒̕ the game
 ### Objects
 <!-- Button-->
 <p align="left">
     <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182188591-da67cfd8-0e70-4a2c-824e-f682fe93278f.gif">
-    <t> A button can be toggled beween on or off, used to open and close doors</t>
+    <t> A **button** can be toggled beween on or off, used to open and close doors</t>
 </p>
 
 <!-- Plate-->
 <p align="left">
     <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182190339-8801967b-7d60-4260-92c6-eddc30f956b4.gif">
-    <t> A Plate is toggled on or off if a player walks or a box is placed on it, used to open and close doors</t>
+    <t> A **plate** is toggled on or off if a player walks or a box is placed on it, used to open and close doors</t>
 </p>
 
 <!-- Door-->
 <p align="left">
     <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182191249-53668d2d-0eb8-493f-aa8f-8e5399d44468.gif">
-    <t> A Door can be opend by plates and buttons. Sometimes more then one of each!</t>
+    <t> A **door** can be opend by plates and buttons. Sometimes more than one of each!</t>
 </p>
 
 <!-- Hole-->
 <p align="left">
     <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182194195-fe95896c-a610-4a24-b806-030beb6a6e52.gif">
-    <t> A Hole can't be walked over unless you can fill it with a box. Be carefull you are not getting the box out of there!</t>
+    <t> A **hole** can't be walked over unless you fill it with a box. Be carefull you are not getting the box out of there!</t>
 </p>
 
 <!-- Box-->
 <p align="left">
     <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182194668-cf9ec242-c51b-4512-a1bf-88e4d80ec139.png">
-    <t> A box can be picked up and be placed on plates to keep them active, put them next to a hole and they fall in</t>
+    <t> A **box** can be picked up and placed on plates to keep them active, put them next to a hole and they fall in</t>
 </p>
 
 <!-- Goal-->
 <p align="left">
     <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182195574-53a3c7ea-7551-457a-81cf-539b1fbcec96.png">
-    <t> If both players have walked over a goal the next level will start! </t>
+    <t> If both players have walked over a **goal** the next level will start! </t>
 </p>
 
 # Credits
