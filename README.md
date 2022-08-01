@@ -75,8 +75,14 @@ But some say that a few bugs snuck in...
   
 # How To join a game:
 From the Main menu
-- press on `Host`, if you want to host a game. After that enter the port you want to host the game and press the arrow to the right.
+<p align= "center">
+    <img src="https://user-images.githubusercontent.com/62175543/182196702-51a61a48-89b7-48a3-a36f-a566749bae11.png">
+</p>
+
+- press on `Host`, if you want to host a game. After that enter the port you want to host the game on.
 - press on `Client`, if you want to join a game. After that enter the ip of the host and the port to connect to `ip:host`.
+
+To confirm press the arrow to the right.
 
 # How to play:
 ### Controlls
