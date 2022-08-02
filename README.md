@@ -23,6 +23,7 @@ Together with a friend!
 5. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
 6. [Credits](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#credits)
 7. [Previews](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#previews)
+8. [Spoiler](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#spoiler)
 
 # Quick instructions
 1. Get a friend!
