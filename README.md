@@ -160,8 +160,9 @@ Keyboard Key Sprites:
 </p>
 
 # Spoilers
-
 This section contains **full** Spoilers for the game and explanation of the bug
+<details>
+    <summary>Click here to expand</summary>
 
 ## The Bug - Phantom Boxes
 
@@ -180,3 +181,4 @@ The Result:
 - The other player will only see the box that was **last** placed by you, if he moves the duplicated box the phantom boxes will disapear on your end
 - Phantom boxes can activate plates and fill holes but only on your end!
 - But be careful, reloading turns off activated buttons without updating the door
+</details>
