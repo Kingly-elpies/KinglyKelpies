@@ -161,11 +161,13 @@ Keyboard Key Sprites:
 
 # Spoilers
 
-this section contains **full** spolilers for the game and explanation of the bug
+This section contains **full** Spoilers for the game and explanation of the bug
 
 ## The Bug - Phantom Boxes
 
-We call the Bug **Phantom Boxes** it is caused by the reload feature which does not work correctly. (Or does it 🤔)
+We call the Bug **Phantom Boxes** 
+
+It is caused by the reload feature which does not work correctly. (Or does it 🤔)
 
 To reproduce it follow these steps:
 
