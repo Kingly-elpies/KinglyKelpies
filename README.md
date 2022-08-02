@@ -180,7 +180,7 @@ Keyboard Key Sprites:
 </p>
 
 # Spoilers
-This section contains **full** Spoilers for the games twist and explanation of the bug
+This section contains **full** Spoilers for the game's twist and explanation of the bug
 <details>
     <summary>Click here to expand</summary>
 
@@ -205,7 +205,7 @@ It is caused by the reload feature which does not work correctly. (Or does it ðŸ
     
 ### Explanation 
     
-This happends because if you reload the other instance of the game won't be notified. 
+This happens because if you reload the other instance of the game won't be notified. 
     
 Additionally all old existing boxes won't be deleted if they are not updated from the other instance.
 
