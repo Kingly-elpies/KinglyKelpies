@@ -1,176 +1,214 @@
-# Python Discord Code Jam Repository Template
+**Python Discord Summer Code Jam 2022** submission from the team **KinglyKelpies**.
+Using the technologie Websockets and the theme *Its not a bug its a feature*
 
-## A Primer
-Hello code jam participants! We've put together this repository template for you to use in [our code jams](https://pythondiscord.com/events/) or even other Python events!
+# *for level_id in range(14)*
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/62175543/182180722-6496cbdc-d033-41fd-ae5c-936ad99b635b.gif">
+</p>
 
-This document will contain the following information:
-1. [What does this template contain?](#what-does-this-template-contain)
-2. [How do I use it?](#how-do-i-use-it)
-3. [How do I adapt it to my project?](#how-do-i-adapt-it-to-my-project)
+## What is this?
+    
+A simple multiplayer puzzle game, 
+in which your aim is to reach the goal by pressing buttons, standing on plates and moving boxes.
+    
+Together with a friend!
 
-You can also look at [our style guide](https://pythondiscord.com/events/code-jams/code-style-guide/) to get more information about what we consider a maintainable code style.
+*But some say that a few bugs snuck in...*
 
-## What does this template contain?
+# Table of contents
+1. [Quick instructions](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#quick-instructions)
+2. [Installation](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#installation)
+3. [How to run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
+4. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-join-a-game)
+5. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
+6. [Help i softlocked myself\!](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#help-i-softlocked-myself)
+7. [Credits](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#credits)
+8. [Previews](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#previews)
+9. [Spoilers](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#spoilers)
 
-Here is a quick rundown of what each file in this repository contains:
-- `LICENSE`: [The MIT License](https://opensource.org/licenses/MIT), an OSS approved license which grants rights to everyone to use and modify your projects and limits your liability. We highly recommend you to read the license.
-- `.gitignore`: A list of files that will be ignored by Git. Most of them are auto-generated or contain data that you wouldn't want to share publicly.
-- `dev-requirements.txt`: Every PyPI packages used for the project's development, to ensure a common and maintainable code style. [More on that below](#using-the-default-pip-setup).
-- `tox.ini`: The configurations of two of our style tools: [`flake8`](https://pypi.org/project/flake8/) and [`isort`](https://pypi.org/project/isort/).
-- `.pre-commit-config.yaml`: The configuration of the [`pre-commit`](https://pypi.org/project/pre-commit/) tool.
-- `.github/workflows/lint.yaml`: A [GitHub Actions](https://github.com/features/actions) workflow, a set of actions run by GitHub on their server after each push, to ensure the style requirements are met.
+# Quick instructions
+1. [Get a friend!](https://www.wikihow.com/Have-Friends)
+2. Have [python 3.10](https://www.python.org/downloads/release/python-3100/) installed.
+3. You both install the game by running:
+    ```shell
+    $ git clone https://github.com/Kingly-elpies/KinglyKelpies
+    $ cd KinglyKelpies/
+    $ pip install -r dev-requirements.txt
+    ```
+4. Run the game:
+    ```shell
+    $ python main.py
+    ```
+5. One player hosts on a port, the other joins as client on ip:port
+6. use `w`,`a`,`s`,`d` to move 
+8. reach the blue arrow to win!
+<img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182195574-53a3c7ea-7551-457a-81cf-539b1fbcec96.png"></img>
+    
 
-Each of these files have comments for you to understand easily, and modify to fit your needs.
+# Installation
 
-### flake8: general style rules
+### 0. Requirements:
+   - [python 3.10](https://www.python.org/downloads/release/python-3100/)
 
-Our first and probably most important tool is flake8. It will run a set of plugins on your codebase and warn you about any non-conforming lines.
-Here is a sample output:
-```
-~> flake8
-./app.py:1:6: N802 function name 'helloWorld' should be lowercase
-./app.py:1:16: E201 whitespace after '('
-./app.py:2:1: D400 First line should end with a period
-./app.py:2:1: D403 First word of the first line should be properly capitalized
-./app.py:3:19: E225 missing whitespace around operator
-```
+### 1. Download:
+   Run this command in the directory you want to download it to.
+   ```shell
+   $ git clone https://github.com/Kingly-elpies/KinglyKelpies
+   ```
+    
+### 2. Install the dependencies:
+  In the `/KinglyKelpies` directory run:
+  ```shell
+  $ pip install -r dev-requirements.txt
+  ```
+  This installs all modules you need to run the game
 
-Each line corresponds to an error. The first part is the file path, then the line number, and the column index.
-Then comes the error code, a unique identifier of the error, and then a human-readable message.
+#### Now you are setup to run the game!
+  
+# How to run
+  - First follow or instructions in [Installation](https://github.com/Kingly-elpies/KinglyKelpies/edit/read-me-update/README.md#installation)
+  - Then run in `/KinglyKelpies` (with the python version 3.10)
+  ```shell
+  $ python main.py
+  ```  
+  - You will be greeted by our main menu
+  
+# How to join a game:
+From the Main menu
+<p align= "center">
+    <img src="https://user-images.githubusercontent.com/62175543/182196702-51a61a48-89b7-48a3-a36f-a566749bae11.png">
+</p>
 
-If, for any reason, you do not wish to comply with this specific error on a specific line, you can add `# noqa: CODE` at the end of the line.
-For example:
-```python
-def helloWorld():  # noqa: N802
-    ...
-```
-will pass linting. Although we do not recommend ignoring errors unless you have a good reason to do so.
+- press on `Host`, if you want to host a game. After that enter the port you want to host the game on.
+- press on `Client`, if you want to join a game. After that enter the ip of the host and the port to connect to `ip:host`.
 
-It is run by calling `flake8` in the project root.
+To confirm press the arrow to the right. 
 
-#### Plugin List:
+### Notes:
+   - As a host you have to make sure that a client can connect to your port, this may include port forwarding.
+   - If you want to connect to localhost don't use the ip `127.0.0.1` use `localhost` instead.
 
-- `flake8-docstring`: Checks that you properly documented your code.
+# How to play:
+### Controls
+   - `w` for up   
+   - `a` for left
+   - `s` for down  
+   - `d` for right
+   - `e` to press buttons
+   - `q` to pick up and drop boxes
+   - `esc` to open the pause menu
+      - the host can acces the level menu from here
+      - by hitting reload you can r̵͎̀e̷̪̤̟̠͓̥͑͋̓́͊̀̚ḻ̸̰̯̏̑͛̂̎̄̽͘ơ̶̮̼̯͋̅͛å̴͇͍̩̲̍̈́͘d̶͇̰͐̓͑͒̕ the level
+    
+### Objects
+<!-- Button-->
+<p align="left">
+    <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182188591-da67cfd8-0e70-4a2c-824e-f682fe93278f.gif">
+    <t> A button can be toggled on or off, used to open and close doors</t>
+</p>
 
-### ISort: automatic import sorting
+<!-- Plate-->
+<p align="left">
+    <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182190339-8801967b-7d60-4260-92c6-eddc30f956b4.gif">
+    <t> A plate is toggled on or off if a player walks or a box is placed on it, used to open and close doors</t>
+</p>
 
-This second tool will sort your imports according to the [PEP8](https://www.python.org/dev/peps/pep-0008/#imports). That's it! One less thing for you to do!
+<!-- Door-->
+<p align="left">
+    <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182191249-53668d2d-0eb8-493f-aa8f-8e5399d44468.gif">
+    <t> A door can be opend by plates and buttons. Sometimes more than one of each!</t>
+</p>
 
-It is run by calling `isort .` in the project root. Notice the dot at the end, it tells ISort to use the current directory.
+<!-- Hole-->
+<p align="left">
+    <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182194195-fe95896c-a610-4a24-b806-030beb6a6e52.gif">
+    <t> A hole can't be walked over unless you fill it with a box. Be carefull you are not getting the box out of there!</t>
+</p>
 
-### Pre-commit: run linting before committing
+<!-- Box-->
+<p align="left">
+    <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182194668-cf9ec242-c51b-4512-a1bf-88e4d80ec139.png">
+    <t> A box can be picked up and placed on plates to keep them active, put them next to a hole and they fall in</t>
+</p>
 
-This third tool doesn't check your code, but rather makes sure that you actually *do* check it.
+<!-- Goal-->
+<p align="left">
+    <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182195574-53a3c7ea-7551-457a-81cf-539b1fbcec96.png">
+    <t> If both players have walked over a goal the next level will start! </t>
+</p>
 
-It makes use of a feature called [Git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) which allow you to run a piece of code before running `git commit`.
-The good thing about it is that it will cancel your commit if the lint doesn't pass. You won't have to wait for Github Actions to report and have a second fix commit.
+# Help i softlocked myself!
 
-It is *installed* by running `pre-commit install` and can be run manually by calling only `pre-commit`.
+This contains *some* Spoilers
+<details>
+    <summary>Click here to expand
+    </summary>
+<br />
+You have probably noticed that the reload level function doesn't work. 
+    
+This is because it contains our bug!
+    
+To actually reload a level:
+- open the level select
+- enter the number of your current level (starting at 0)
+- press go
+    
+</details>
 
-[Lint before you push!](https://soundcloud.com/lemonsaurusrex/lint-before-you-push)
+# Credits
+This project was created by: 
+  | [Falkan#4044](https://github.com/falkanson) | [Vinyzu#1470](https://github.com/Vinyzu) | [Redriel#3335](https://github.com/Redriel57) | 
+  |---------------------------------------------|------------------------------------------|----------------------------------------------|
+  |  Art, game and websocket communication      | Menus, sound and game                    | Level design                                 |
+  
+### Outside Sources
+Music:
 
-#### Hooks List:
+> Tobu - Infectious http://youtube.com/tobuofficial: Provided by http://spoti.fi/NCS
+    
+Keyboard Key Sprites:
 
-- `check-toml`: Lints and corrects your TOML files.
-- `check-yaml`: Lints and corrects your YAML files.
-- `end-of-file-fixer`: Makes sure you always have an empty line at the end of your file.
-- `trailing-whitespaces`: Removes whitespaces at the end of each line.
-- `python-check-blanket-noqa`: Forbids you from using noqas on large pieces of code.
-- `isort`: Runs ISort.
-- `flake8`: Runs flake8.
+> Dream Mix - Pixel Keyboard Keys - for UI: https://dreammix.itch.io/keyboard-keys-for-ui
 
-## How do I use it?
+# Previews
 
-### Creating your Team Repository
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/62175543/182314896-cb0c655d-efcb-4202-bbfd-4259e67852ba.png">
+    <img src="https://user-images.githubusercontent.com/62175543/182314902-1849938a-24bb-4d0f-a8dc-3507686dbce3.png">
+    <img src="https://user-images.githubusercontent.com/62175543/182314871-0e00d42c-89db-45ab-a2eb-ee72204812a4.png">
+    <img src="https://user-images.githubusercontent.com/62175543/182314884-ec0ea6e4-e8d3-4ed1-94cb-872529452278.png">
+</p>
 
-One person in the team, preferably the leader, will have to create the repository and add other members as collaborators.
+# Spoilers
+This section contains **full** Spoilers for the game's twist and explanation of the bug
+<details>
+    <summary>Click here to expand</summary>
 
-1. In the top right corner of your screen, where **Clone** usually is, you have a **Use this template** button to click.
+## The Bug - Phantom Boxes
 
-![](https://docs.github.com/assets/images/help/repository/use-this-template-button.png)
+We call the Bug **Phantom Boxes** 
 
-2. Give the repository a name and a description.
+It is caused by the reload feature which does not work correctly. (Or does it 🤔)
 
-![](https://docs.github.com/assets/images/help/repository/create-repository-name.png)
+### To reproduce it follow these steps:
 
-3. Click **Create repository from template**.
+- Move one box you want to create a phantom version of
+- Reload the game using the button in the pause menu
+    
+### The effect:
 
-4. Click **Settings** in your newly created repository.
+- There will now be two iterations of the box, one at the original starting position and one at the position you moved the box to
+- The other player will only see the box that was **last** placed by you, if he moves the duplicated box the phantom boxes will disapear on your end
+- Phantom boxes can activate plates and fill holes but only on your end!
+- But be careful, reloading turns off activated buttons without updating the door
+    
+    
+### Explanation 
+    
+This happens because if you reload the other instance of the game won't be notified. 
+    
+Additionally all old existing boxes won't be deleted if they are not updated from the other instance.
 
-![](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
-
-5. Select **Manage access**.
-
-<!-- Yes, this is inline html. The source image is too vertical to be displayed with 100% width. -->
-<img src="https://docs.github.com/assets/images/help/repository/manage-access-tab.png" style="width: 30%"></img>
-
-6. Click **Invite a collaborator**.
-
-![](https://docs.github.com/assets/images/help/repository/invite-a-collaborator-button.png)
-
-7. Insert the names of each of your teammates, and invite them. Once they have accepted the invitation in their email, they will have write access to the repository.
-
-You are now ready to go! Now sit down, relax, and wait for the kickstart!
-Don't forget to swap "Python Discord" in the `LICENSE` file for the name of each of your team members or the name of your team after the start of the jam.
-
-### Using the Default Pip Setup
-
-Our default setup includes a bare requirement file to be used with a [virtual environment](https://docs.python.org/3/library/venv.html).
-
-We recommend this if you never have used any other dependency manager, although if you have, feel free to switch to it. More on that below.
-
-#### Creating the environment
-Create a virtual environment in the folder `.venv`.
-```shell
-$ python -m venv .venv
-```
-
-#### Enter the environment
-It will change based on your operating system and shell.
-```shell
-# Linux, Bash
-$ source .venv/bin/activate
-# Linux, Fish
-$ source .venv/bin/activate.fish
-# Linux, Csh
-$ source .venv/bin/activate.csh
-# Linux, PowerShell Core
-$ .venv/bin/Activate.ps1
-# Windows, cmd.exe
-> .venv\Scripts\activate.bat
-# Windows, PowerShell
-> .venv\Scripts\Activate.ps1
-```
-
-#### Installing the Dependencies
-Once the environment is created and activated, use this command to install the development dependencies.
-```shell
-$ pip install -r dev-requirements.txt
-```
-
-#### Exiting the environment
-Interestingly enough, it is the same for every platform
-```shell
-$ deactivate
-```
-
-Once the environment is activated, all the commands listed previously should work. We highly recommend that you run `pre-commit install` as soon as possible.
-
-## How do I adapt it to my project?
-
-If you wish to use Pipenv or Poetry, you will have to move the dependencies in `dev-requirements.txt` to the development dependencies of your tool.
-
-We've included a porting of `dev-requirements.txt` to both [poetry](./samples/pyproject.toml) and [pipenv](./samples/Pipfile) in the [samples folder](./samples).
-If you use the poetry setup, make sure to change the project name, description, and authors at the top of the file.
-
-When installing new dependencies, don't forget to [pin them](https://pip.pypa.io/en/stable/user_guide/#pinned-version-numbers) by adding a version tag at the end.
-For example, if I wish to install `Click`, a quick look at [PyPI](https://pypi.org/project/click/) tells me that 8.0.1 is the latest version.
-I will then add `click ~= 8.0`, without the last number, to my dependency manager.
-
-A code jam project is left unmaintained after the end of the event. If the dependencies aren't pinned, the project will break after the first major change in an API.
-
-## Final words
-
-Don't forget to replace this README with an actual description of your project! Images are also welcome!
-
-We hope this template will be helpful. Good luck in the jam!
+This results in the existence of multiple iterations of the same box.
+    
+</details>
