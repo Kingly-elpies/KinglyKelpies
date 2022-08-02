@@ -21,7 +21,7 @@ Together with a friend!
 3. [How to run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
 4. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-join-a-game)
 5. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
-6. [Help i softlocked myself](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#help-i-softlocked-myself)
+6. [Help i softlocked myself\!](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#help-i-softlocked-myself)
 7. [Credits](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#credits)
 8. [Previews](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#previews)
 9. [Spoilers](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#spoilers)
