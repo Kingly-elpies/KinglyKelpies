@@ -27,7 +27,7 @@ Together with a friend!
 9. [Spoilers](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#spoilers)
 
 # Quick instructions
-1. Get a friend!
+1. [Get a friend!](https://www.wikihow.com/Have-Friends)
 2. Have [python 3.10](https://www.python.org/downloads/release/python-3100/) installed.
 3. You both install the game by running:
     ```shell
