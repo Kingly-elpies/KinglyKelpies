@@ -149,8 +149,8 @@ You have probably noticed that the reload level function doesn't work.
 This is because it contains our bug!
     
 To actually reload a level:
-- open the level selcet
-- enter the number of you current level (starting at 0)
+- open the level select
+- enter the number of your current level (starting at 0)
 - press go
     
 </details>
@@ -207,8 +207,8 @@ It is caused by the reload feature which does not work correctly. (Or does it ðŸ
     
 This happends because if you reload the other instance of the game won't be notified. 
     
-Additionally all old existing boxes wont be delted if they are not updated from the other instance.
+Additionally all old existing boxes won't be deleted if they are not updated from the other instance.
 
-This results in the existance of multiple variants of the same box.
+This results in the existence of multiple iterations of the same box.
     
 </details>
