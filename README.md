@@ -1,4 +1,6 @@
-**Python Discord Summer Code Jam 2022** submission from the team **KinglyKelpies**
+**Python Discord Summer Code Jam 2022** submission from the team **KinglyKelpies**.
+Using the technologie Websockets and the theme *Its not a bug its a feature*
+
 # *for level_id in range(14)*
 <p align="center">
     <img src="https://user-images.githubusercontent.com/62175543/182180722-6496cbdc-d033-41fd-ae5c-936ad99b635b.gif">
@@ -155,3 +157,23 @@ Keyboard Key Sprites:
     <img src="https://user-images.githubusercontent.com/62175543/182314871-0e00d42c-89db-45ab-a2eb-ee72204812a4.png">
     <img src="https://user-images.githubusercontent.com/62175543/182314884-ec0ea6e4-e8d3-4ed1-94cb-872529452278.png">
 </p>
+
+# Spoilers
+
+this section contains **full** spolilers for the game and explanation of the bug
+
+## The Bug - Phantom Boxes
+
+We call the Bug **Phantom Boxes** it is caused by the reload feature which does not work correctly. (Or does it 🤔)
+
+To reproduce it follow these steps:
+
+- Move one box you want to create a phantom version of
+- Reload the game using the button in the pause menu
+    
+The Result:
+
+- There will now be two versions of the box, one at the original starting position and one at the position you moved the box to
+- The other player will only see the box that was **last** placed by you, if he moves the deuplicated box the phantom boxes will disapear on your end
+- Phantom boxes will activate plates and fill holes but only on your end!
+- but be carefull reloading activted buttons 
