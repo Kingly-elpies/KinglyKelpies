@@ -195,9 +195,9 @@ It is caused by the reload feature which does not work correctly. (Or does it ðŸ
 - Move one box you want to create a phantom version of
 - Reload the game using the button in the pause menu
     
-### The Result:
+### The effect:
 
-- There will now be two versions of the box, one at the original starting position and one at the position you moved the box to
+- There will now be two iterations of the box, one at the original starting position and one at the position you moved the box to
 - The other player will only see the box that was **last** placed by you, if he moves the duplicated box the phantom boxes will disapear on your end
 - Phantom boxes can activate plates and fill holes but only on your end!
 - But be careful, reloading turns off activated buttons without updating the door
