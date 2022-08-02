@@ -54,22 +54,22 @@ Together with a friend!
    $ git clone https://github.com/Kingly-elpies/KinglyKelpies
    ```
     
-### 2. install the dependencies:
+### 2. Install the dependencies:
   In the `/KinglyKelpies` directory run:
   ```shell
-  $ pip insall -r dev-requirements.txt
+  $ pip install -r dev-requirements.txt
   ```
   This installs all modules you need to run the game
 
 #### Now you are setup to run the game!
   
 # How to run
-  - First follow or instructions for [Installation](https://github.com/Kingly-elpies/KinglyKelpies/edit/read-me-update/README.md#installation)
+  - First follow or instructions in [Installation](https://github.com/Kingly-elpies/KinglyKelpies/edit/read-me-update/README.md#installation)
   - Then run in `/KinglyKelpies` (with the python version 3.10)
   ```shell
   $ python main.py
   ```  
-  - you will be greeted by our main menu
+  - You will be greeted by our main menu
   
 # How to join a game:
 From the Main menu
@@ -96,12 +96,12 @@ To confirm press the arrow to the right.
    - `q` to pick up and drop boxes
    - `esc` to open the pause menu
       - the host can acces the level menu from here
-      - by hitting reload you can r̵͎̀e̷̪̤̟̠͓̥͑͋̓́͊̀̚ḻ̸̰̯̏̑͛̂̎̄̽͘ơ̶̮̼̯͋̅͛å̴͇͍̩̲̍̈́͘d̶͇̰͐̓͑͒̕ the game
+      - by hitting reload you can r̵͎̀e̷̪̤̟̠͓̥͑͋̓́͊̀̚ḻ̸̰̯̏̑͛̂̎̄̽͘ơ̶̮̼̯͋̅͛å̴͇͍̩̲̍̈́͘d̶͇̰͐̓͑͒̕ the level
 ### Objects
 <!-- Button-->
 <p align="left">
     <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182188591-da67cfd8-0e70-4a2c-824e-f682fe93278f.gif">
-    <t> A button can be toggled beween on or off, used to open and close doors</t>
+    <t> A button can be toggled on or off, used to open and close doors</t>
 </p>
 
 <!-- Plate-->
