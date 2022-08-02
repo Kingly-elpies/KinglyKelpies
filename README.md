@@ -20,6 +20,7 @@ Together with a friend!
 4. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-join-a-game)
 5. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
 6. [Credits](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#credits)
+7. [Previews](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#previews)
 
 # Quick instructions
 1. Get a friend!
@@ -146,3 +147,11 @@ Key Sprite:
 
 > Dream Mix - Pixel Keyboard Keys - for UI: https://dreammix.itch.io/keyboard-keys-for-ui
 
+# Previews
+
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/62175543/182314896-cb0c655d-efcb-4202-bbfd-4259e67852ba.png">
+    <img src="https://user-images.githubusercontent.com/62175543/182314902-1849938a-24bb-4d0f-a8dc-3507686dbce3.png">
+    <img src="https://user-images.githubusercontent.com/62175543/182314871-0e00d42c-89db-45ab-a2eb-ee72204812a4.png">
+    <img src="https://user-images.githubusercontent.com/62175543/182314884-ec0ea6e4-e8d3-4ed1-94cb-872529452278.png">
+</p>
