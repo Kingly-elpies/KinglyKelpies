@@ -21,9 +21,10 @@ Together with a friend!
 3. [How to run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
 4. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-join-a-game)
 5. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
-6. [Credits](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#credits)
-7. [Previews](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#previews)
-8. [Spoilers](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#spoilers)
+6. [Help i softlocked myself](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#help-i-softlocked-myself)
+7. [Credits](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#credits)
+8. [Previews](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#previews)
+9. [Spoilers](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#spoilers)
 
 # Quick instructions
 1. Get a friend!
@@ -98,6 +99,7 @@ To confirm press the arrow to the right.
    - `esc` to open the pause menu
       - the host can acces the level menu from here
       - by hitting reload you can r̵͎̀e̷̪̤̟̠͓̥͑͋̓́͊̀̚ḻ̸̰̯̏̑͛̂̎̄̽͘ơ̶̮̼̯͋̅͛å̴͇͍̩̲̍̈́͘d̶͇̰͐̓͑͒̕ the level
+    
 ### Objects
 <!-- Button-->
 <p align="left">
@@ -134,6 +136,24 @@ To confirm press the arrow to the right.
     <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182195574-53a3c7ea-7551-457a-81cf-539b1fbcec96.png">
     <t> If both players have walked over a goal the next level will start! </t>
 </p>
+
+# Help i softlocked myself!
+
+This contains *some* Spoilers
+<details>
+    <summary>Click here to expand
+    </summary>
+<br />
+You have probably noticed that the reload level function doesn't work. 
+    
+This is because it contains our bug!
+    
+To actually reload a level:
+- open the level selcet
+- enter the number of you current level (starting at 0)
+- press go
+    
+</details>
 
 # Credits
 This project was created by: 
