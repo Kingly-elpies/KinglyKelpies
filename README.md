@@ -177,6 +177,6 @@ To reproduce it follow these steps:
 The Result:
 
 - There will now be two versions of the box, one at the original starting position and one at the position you moved the box to
-- The other player will only see the box that was **last** placed by you, if he moves the deuplicated box the phantom boxes will disapear on your end
-- Phantom boxes will activate plates and fill holes but only on your end!
-- but be carefull reloading activted buttons 
+- The other player will only see the box that was **last** placed by you, if he moves the duplicated box the phantom boxes will disapear on your end
+- Phantom boxes can activate plates and fill holes but only on your end!
+- But be careful, reloading turns off activated buttons without updating the door
