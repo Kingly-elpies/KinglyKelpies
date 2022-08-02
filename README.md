@@ -180,7 +180,7 @@ Keyboard Key Sprites:
 </p>
 
 # Spoilers
-This section contains **full** Spoilers for the game and explanation of the bug
+This section contains **full** Spoilers for the games twist and explanation of the bug
 <details>
     <summary>Click here to expand</summary>
 
@@ -190,15 +190,25 @@ We call the Bug **Phantom Boxes**
 
 It is caused by the reload feature which does not work correctly. (Or does it 🤔)
 
-To reproduce it follow these steps:
+### To reproduce it follow these steps:
 
 - Move one box you want to create a phantom version of
 - Reload the game using the button in the pause menu
     
-The Result:
+### The Result:
 
 - There will now be two versions of the box, one at the original starting position and one at the position you moved the box to
 - The other player will only see the box that was **last** placed by you, if he moves the duplicated box the phantom boxes will disapear on your end
 - Phantom boxes can activate plates and fill holes but only on your end!
 - But be careful, reloading turns off activated buttons without updating the door
+    
+    
+### Explanation 
+    
+This happends because if you reload the other instance of the game won't be notified. 
+    
+Additionally all old existing boxes wont be delted if they are not updated from the other instance.
+
+This results in the existance of multiple variants of the same box.
+    
 </details>
