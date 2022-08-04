@@ -51,7 +51,7 @@ Disclaimer: The video contains Spoilers
 <details>
     <summary>Click here to expand<summary>
 https://www.youtube.com/watch?v=-VQ_ijuo-Mg
-<details>
+</details>
 
 # Installation
 
