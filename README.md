@@ -16,16 +16,16 @@ Together with a friend!
 *But some say that a few bugs snuck in...*
 
 # Table of contents
-1. [Quick instructions](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#quick-instructions)
+1. [Quick instructions](https://github.com/Kingly-elpies/KinglyKelpies/blob/main/README.md#quick-instructions)
 2. [Video description](https://github.com/Kingly-elpies/KinglyKelpies/blob/main/README.md#video-description)
-3. [Installation](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#installation)
-4. [How to run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
-5. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-join-a-game)
-6. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
-7. [Help i softlocked myself\!](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#help-i-softlocked-myself)
-8. [Credits](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#credits)
-9. [Previews](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#previews)
-10. [Spoilers](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#spoilers)
+3. [Installation](https://github.com/Kingly-elpies/KinglyKelpies/blob/main/README.md#installation)
+4. [How to run](https://github.com/Kingly-elpies/KinglyKelpies/blob/main/README.md#how-to-run)
+5. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/main/README.md#how-to-join-a-game)
+6. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/main/README.md#how-to-play)
+7. [Help i softlocked myself\!](https://github.com/Kingly-elpies/KinglyKelpies/blob/main/README.md#help-i-softlocked-myself)
+8. [Credits](https://github.com/Kingly-elpies/KinglyKelpies/blob/main/README.md#credits)
+9. [Previews](https://github.com/Kingly-elpies/KinglyKelpies/blob/main/README.md#previews)
+10. [Spoilers](https://github.com/Kingly-elpies/KinglyKelpies/blob/main/README.md#spoilers)
 
 # Quick instructions
 1. [Get a friend!](https://www.wikihow.com/Have-Friends)
