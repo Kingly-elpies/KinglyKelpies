@@ -17,7 +17,7 @@ Together with a friend!
 
 # Table of contents
 1. [Quick instructions](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#quick-instructions)
-2. [Video description](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#video-description)
+2. [Video description](https://github.com/Kingly-elpies/KinglyKelpies/blob/main/README.md#video-description)
 3. [Installation](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#installation)
 4. [How to run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
 5. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-join-a-game)
