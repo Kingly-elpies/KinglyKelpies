@@ -44,6 +44,14 @@ Together with a friend!
 8. reach the blue arrow to win!
 <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182195574-53a3c7ea-7551-457a-81cf-539b1fbcec96.png"></img>
     
+# Video Description
+
+Disclaimer: The video contains Spoilers
+
+<details>
+    <summary>Click here to expand<summary>
+https://www.youtube.com/watch?v=-VQ_ijuo-Mg
+<details>
 
 # Installation
 
