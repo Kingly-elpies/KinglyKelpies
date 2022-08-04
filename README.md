@@ -1,5 +1,5 @@
 **Python Discord Summer Code Jam 2022** submission from the team **KinglyKelpies**.
-Using the technologie Websockets and the theme *Its not a bug its a feature*
+Using the technology Websockets and the theme *Its not a bug its a feature*
 
 # *for level_id in range(14)*
 <p align="center">
