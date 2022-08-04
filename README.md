@@ -17,14 +17,15 @@ Together with a friend!
 
 # Table of contents
 1. [Quick instructions](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#quick-instructions)
-2. [Installation](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#installation)
-3. [How to run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
-4. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-join-a-game)
-5. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
-6. [Help i softlocked myself\!](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#help-i-softlocked-myself)
-7. [Credits](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#credits)
-8. [Previews](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#previews)
-9. [Spoilers](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#spoilers)
+2. [Video description](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#video-description)
+3. [Installation](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#installation)
+4. [How to run](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-run)
+5. [How to join a game](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-join-a-game)
+6. [How to play](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#how-to-play)
+7. [Help i softlocked myself\!](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#help-i-softlocked-myself)
+8. [Credits](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#credits)
+9. [Previews](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#previews)
+10. [Spoilers](https://github.com/Kingly-elpies/KinglyKelpies/blob/read-me-update/README.md#spoilers)
 
 # Quick instructions
 1. [Get a friend!](https://www.wikihow.com/Have-Friends)
@@ -44,7 +45,7 @@ Together with a friend!
 8. reach the blue arrow to win!
 <img height=48 width=48 align="top" src = "https://user-images.githubusercontent.com/62175543/182195574-53a3c7ea-7551-457a-81cf-539b1fbcec96.png"></img>
     
-# Video Description
+# Video description
 
 Disclaimer: The video contains Spoilers
 
